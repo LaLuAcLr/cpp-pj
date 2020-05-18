@@ -1,4 +1,4 @@
-#include "Dungeon.h"
+﻿#include "Dungeon.h"
 
 Dungeon::Dungeon()
 {
@@ -39,49 +39,49 @@ void Dungeon::initialrole()
 
 void Dungeon::initialenemy()
 {
-    enemy[0].name="小星星";//3
+    enemy[0].name="Star";//3
     enemy[0].hp=50;
     enemy[0].atk=2;
     enemy[0].def=2;
     enemy[0].exp=4;
     enemy[0].gold=5;
 
-    enemy[1].name="毒蘑菇";//4
+    enemy[1].name="Mushroom";//4
     enemy[1].hp=100;
     enemy[1].atk=6;
     enemy[1].def=4;
     enemy[1].exp=8;
     enemy[1].gold=10;
 
-    enemy[2].name="绿鸭子";//11
+    enemy[2].name="GreenDuck";//11
     enemy[2].hp=200;
     enemy[2].atk=10;
     enemy[2].def=8;
     enemy[2].exp=16;
     enemy[2].gold=20;
 
-    enemy[3].name="红鸭子";//12
+    enemy[3].name="RedDuck";//12
     enemy[3].hp=300;
     enemy[3].atk=20;
     enemy[3].def=16;
     enemy[3].exp=32;
     enemy[3].gold=30;
 
-    enemy[4].name="食人花-绿";//25
+    enemy[4].name="GreenChomper";//25
     enemy[4].hp=600;
     enemy[4].atk=30;
     enemy[4].def=24;
     enemy[4].exp=42;
     enemy[4].gold=40;
 
-    enemy[5].name="食人花-红";//26
+    enemy[5].name="RedChomper";//26
     enemy[5].hp=900;
     enemy[5].atk=42;
     enemy[5].def=18;
     enemy[5].exp=52;
     enemy[5].gold=46;
 
-    enemy[6].name="飞行鸭";//27
+    enemy[6].name="FlyingDuck";
     enemy[6].hp=1200;
     enemy[6].atk=80;
     enemy[6].def=12;

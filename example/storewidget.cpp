@@ -1,4 +1,4 @@
-#include "storewidget.h"
+﻿#include "storewidget.h"
 
 StoreWidget::StoreWidget(QWidget *parent) : QWidget(parent)
 {

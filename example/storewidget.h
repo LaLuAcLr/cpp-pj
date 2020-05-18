@@ -1,4 +1,4 @@
-#ifndef STOREWIDGET_H
+﻿#ifndef STOREWIDGET_H
 #define STOREWIDGET_H
 
 #include <QWidget>

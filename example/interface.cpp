@@ -1,17 +1,17 @@
-#include "interface.h"
+﻿#include "interface.h"
 #include <QPalette>
 #include <QPixmap>
 #include <QFont>
 #include <QDebug>
 int msgNum=0;
-QString msg[] = {"加载中.","加载中..","加载中...","加载中...."};
+QString msg[] = {"LOADING.","LOADING..","LOADING...","LOADING...."};
 interface::interface(QWidget *parent) :
     QWidget(parent)
 {
     msgLabel = new QLabel(this);//提示信息
     msgLabel->setGeometry(380,440,100,75);
     msgLabel->setStyleSheet("color:white");
-    msgLabel->setFont(QFont("Microsoft YaHei",13));
+    msgLabel->setFont(QFont("Consolas",13));
     msgLabel->hide();
 
     probar = new QProgressBar(this);//进度条
@@ -23,14 +23,14 @@ interface::interface(QWidget *parent) :
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(loading()));
 
-    QFont font("Microsoft YaHei" ,16, 55);
+    QFont font("Consolas" ,16, 55);
     QString button_style="QPushButton{background-color:transparent;color:white;border-radius:5px;}"
                          "QPushButton:hover{background-color:palegreen; color: orangered;}"
                          "QPushButton:pressed{background-color:aquamarine;border-style:inset;}";
 
     button_classical= new QPushButton(this);//开始界面上的play按钮
     button_classical->setGeometry(360,275,150,35);
-    button_classical->setText("迷宫模式");
+    button_classical->setText("Maze");
     button_classical->setStyleSheet(button_style);
     button_classical->setFont(font);
     connect(button_classical,SIGNAL(clicked()),this,SLOT(classicalStart()));
@@ -38,21 +38,21 @@ interface::interface(QWidget *parent) :
 
     button_Dungeon=new QPushButton(this);
     button_Dungeon->setGeometry(360,320,150,35);
-    button_Dungeon->setText("开始游戏");
+    button_Dungeon->setText("Start");
     button_Dungeon->setStyleSheet(button_style);
     button_Dungeon->setFont(font);
     connect(button_Dungeon,SIGNAL(clicked()),this,SLOT(DungeonStart()));
 
     button_Quit=new QPushButton(this);
     button_Quit->setGeometry(360,365,150,35);
-    button_Quit->setText("离开游戏");
+    button_Quit->setText("Leave");
     button_Quit->setStyleSheet(button_style);
     button_Quit->setFont(font);
     connect(button_Quit,SIGNAL(clicked()),this,SLOT(Quit()));
 
     button_About=new QPushButton(this);
     button_About->setGeometry(360,410,150,35);
-    button_About->setText("关于");
+    button_About->setText("About");
     button_About->setStyleSheet(button_style);
     button_About->setFont(font);
     connect(button_About,SIGNAL(clicked()),this,SLOT(AboutShow()));
@@ -94,7 +94,7 @@ void interface::paintEvent(QPaintEvent*)
     }
     painter->end();
 }
-void interface::showMianMenu()
+void interface::showMainMenu()
 {
     button_classical->show();
     button_Dungeon->show();
@@ -143,11 +143,11 @@ void interface::loading()
 }
 void interface::Quit()
 {
-    QMessageBox message(QMessageBox::Information,"退出游戏","是否退出？",QMessageBox::Yes|QMessageBox::No,this);
+    QMessageBox message(QMessageBox::Information,"Quit","Quit?",QMessageBox::Yes|QMessageBox::No,this);
     message.setIconPixmap(QPixmap(":/info/image/information/退出.png"));
     message.setWindowIcon(QIcon(":/info/image/information/关于.ico"));
-    message.setButtonText(QMessageBox::Yes, QString("确 定"));
-    message.setButtonText(QMessageBox::No, QString("返 回"));
+    message.setButtonText(QMessageBox::Yes, QString("Yes"));
+    message.setButtonText(QMessageBox::No, QString("No"));
     if(message.exec()==QMessageBox::Yes)
     {
         qApp->quit();//退出当前应用程序，不需要 QApplication的头文件
@@ -166,7 +166,7 @@ void interface::CheckBGMstate()
 }
 void interface::AboutShow()
 {
-    QMessageBox message(QMessageBox::Information,"关于",
+    QMessageBox message(QMessageBox::Information,"About",
                         "Written By Realself,in SWJTU,2019.08",QMessageBox::Yes,this);
     message.setIconPixmap(QPixmap(":/info/image/information/关于.ico"));
     message.button(QMessageBox::Yes)->hide();//去除按钮

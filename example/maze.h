@@ -1,4 +1,4 @@
-#ifndef MAZE_H
+﻿#ifndef MAZE_H
 #define MAZE_H
 
 #include <QStack>

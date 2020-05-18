@@ -1,4 +1,4 @@
-#ifndef INTERFACE_H
+﻿#ifndef INTERFACE_H
 #define INTERFACE_H
 
 #include <QWidget>
@@ -23,7 +23,7 @@ public:
     bool Dungeonisok;
     QMediaPlayer *BGM;
     QTimer *BGMTimer;
-    void showMianMenu();
+    void showMainMenu();
 private:
     QLabel* msgLabel;
     QPushButton* button_classical;

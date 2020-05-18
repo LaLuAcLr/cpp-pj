@@ -1,4 +1,4 @@
-#include "maze.h"
+﻿#include "maze.h"
 #include <QTime>
 #include <QDebug>
 point::point(){}

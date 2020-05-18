@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QPalette>
@@ -153,17 +153,17 @@ void MainWindow::initialControlWidget()
     StytleNum=2;
     label_Stytle->setStyleSheet(m.MapStytle[StytleNum][15]);
     QLabel *label_select=new QLabel;
-    label_w->setText("迷宫宽度");
-    label_h->setText("迷宫高度");
-    label_select->setText("选择地图风格");
+    label_w->setText("Maze Width");
+    label_h->setText("Maze Height");
+    label_select->setText("Map Style");
     sp_w=new QSpinBox(this);
     sp_h=new QSpinBox(this);
     sp_w->setStyleSheet("background-color:transparent");
     sp_h->setStyleSheet("background-color:transparent");
     SelectMapStytle=new QComboBox(this);
-    SelectMapStytle->addItem(tr("魔法少女"));//项目编号从0开始
-    SelectMapStytle->addItem(tr("火影忍者"));
-    SelectMapStytle->addItem(tr("超级玛丽"));
+    SelectMapStytle->addItem(tr("Maho Shojo"));//项目编号从0开始
+    SelectMapStytle->addItem(tr("Naruto"));
+    SelectMapStytle->addItem(tr("Super Mario"));
     SelectMapStytle->setCurrentIndex(2);
     connect(SelectMapStytle,SIGNAL(currentIndexChanged(int)),this,SLOT(MapStytleSet()));
     //currentIndexChanged(int) 中的int 去掉，就不能被识别为信号
@@ -173,10 +173,10 @@ void MainWindow::initialControlWidget()
     AutoMoveButton=new QPushButton(this);
     AIAnimationButton->setEnabled(false);
     AutoMoveButton->setEnabled(false);
-    GenerateButton->setText("生成迷宫");
-    AutoMoveButton->setText("自动寻路");
-    AIAnimationButton->setText("AI操作");
-    quitButton->setText("主菜单");
+    GenerateButton->setText("Generate Maze");
+    AutoMoveButton->setText("Automatic Find Route");
+    AIAnimationButton->setText("AI");
+    quitButton->setText("MainMenu");
     quitButton->setEnabled(false);
     GenerateButton->setStyleSheet(button_style);
     AutoMoveButton->setStyleSheet(button_style);
@@ -235,9 +235,9 @@ QString intToQString(int num)
 void MainWindow::initialinfoWidget()
 {
     infoWidget=new QWidget(this);
-    QFont fontLabel("Microsoft YaHei" ,12, 75);
-    QFont fontNum("Microsoft YaHei" ,10, 65);
-    QFont fontName("Microsoft YaHei" ,10, 55);
+    QFont fontLabel("Consolas" ,12, 75);
+    QFont fontNum("Consolas" ,10, 65);
+    QFont fontName("Consolas" ,10, 55);
     QString button_style="QPushButton{border-image:url(:/interface/image/interface/labelbg.png);color:white;border-radius:10px;}"
                          "QPushButton:hover{border-image:url(:/interface/image/interface/PushButtonhoverbg.png); color: black;}"
                          "QPushButton:pressed{border-image:url(:/interface/image/interface/PushButtonPressbg.png);}";
@@ -326,21 +326,21 @@ void MainWindow::initialinfoWidget()
     Floor->setStyleSheet("border-image: url(:/interface/image/interface/labelbg.png);");
 
     CharacterPic->setStyleSheet("border-image: url(:/info/image/information/Character.png);");
-    label_Name->setText("人们叫他");
-    label_level->setText("级");
-    label_hp->setText("生命");
-    label_mp->setText("魔法");
-    label_atk->setText("攻击");
-    label_def->setText("防御");
-    label_score->setText("金币");
-    label_exp->setText("经验");
+    label_Name->setText("A Little");
+    label_level->setText("Level");
+    label_hp->setText("Life");
+    label_mp->setText("Mana");
+    label_atk->setText("Attack");
+    label_def->setText("Defense");
+    label_score->setText("Money");
+    label_exp->setText("Exp");
     label_yellowkey->setStyleSheet("border-image: url(:/info/image/information/yellowkey.png);");
     label_purplekey->setStyleSheet("border-image: url(:/info/image/information/purplekey.png);");
     label_redkey->setStyleSheet("border-image: url(:/info/image/information/redkey.png);");
-    label_floor1->setText("第");
-    label_floor2->setText("层");
-    ReturnMainMenu->setText("返回主菜单");
-    Restart->setText("重新开始");
+    label_floor1->setText("");
+    label_floor2->setText("Level");
+    ReturnMainMenu->setText("Return to Main");
+    Restart->setText("Restart");
 
     level->setText(intToQString(d.role.level));
     hp->setText(intToQString(d.role.hp));
@@ -397,13 +397,13 @@ void MainWindow::initialGetitemWin()
     GetitemsShow->setGeometry(220,340,400,50);//居中
     GetitemsShow->setStyleSheet("color:white;background-color:black;");
     GetitemsShow->setAlignment(Qt::AlignCenter);
-    QFont font("Microsoft YaHei" ,12, 75);
+    QFont font("Consolas" ,12, 75);
     GetitemsShow->setFont(font);
     GetitemsShow->hide();
 }
 void MainWindow::initialFightWin()
 {
-    QFont font("Microsoft YaHei" ,12, 75);
+    QFont font("Consolas" ,12, 75);
     FightWidget=new QWidget(this);
     FightWidget->setStyleSheet("color:white;background-color:black;");
     FightWidget->setGeometry(160,160,520,320);
@@ -434,9 +434,9 @@ void MainWindow::initialFightWin()
 
 
 
-    Monster_hpText->setText("生命值");
-    Monster_atkText->setText("攻击力");
-    Monster_defText->setText("防御力");
+    Monster_hpText->setText("HP");
+    Monster_atkText->setText("Atk");
+    Monster_defText->setText("Def");
 
     Character_pic=new QLabel(FightWidget);
     Character_name=new QLabel(FightWidget);
@@ -447,7 +447,7 @@ void MainWindow::initialFightWin()
     Character_defText=new QLabel(FightWidget);
     Character_def=new QLabel(FightWidget);
 
-    QFont fontName("Microsoft YaHei" ,8, 55);
+    QFont fontName("Consolas" ,8, 55);
     Character_name->setFont(fontName);
     Character_name->setAlignment(Qt::AlignCenter);
     Character_hpText->setFont(font);
@@ -468,14 +468,14 @@ void MainWindow::initialFightWin()
 
     Character_pic->setStyleSheet("border-image: url(:/info/image/information/Character.png);");
     Character_name->setText(d.role.name);
-    Character_hpText->setText("生命值");
-    Character_atkText->setText("攻击力");
-    Character_defText->setText("防御力");
+    Character_hpText->setText("HP");
+    Character_atkText->setText("Atk");
+    Character_defText->setText("Def");
 
     QLabel *VS=new QLabel(FightWidget);
     VS->setText("VS");
     VS->setStyleSheet("color:red;background-color:black;");
-    QFont font_VS("Microsoft YaHei" ,24, 75);
+    QFont font_VS("Consolas" ,24, 75);
     VS->setFont(font_VS);
     VS->setGeometry(225,100,100,80);
 
@@ -490,12 +490,12 @@ void MainWindow::initialSetNameWin()
     QString button_style="QPushButton{background-color:black;color:white;border-radius:10px;}"
                          "QPushButton:hover{background-color:black;color:springgreen;}"
                          "QPushButton:pressed{background-color:black;color:springgreen;}";
-    QFont font("Microsoft YaHei" ,12, 35);
+    QFont font("Consolas" ,12, 35);
     NameEdit->setGeometry(320,260,200,40);
     NameEdit->setFont(font);
     NameEdit->setStyleSheet("color:black");
     SetDone->setGeometry(360,320,120,30);
-    SetDone->setText("确定");
+    SetDone->setText("Confirm");
     SetDone->setFont(font);
     SetDone->setStyleSheet(button_style);
     connect(SetDone,SIGNAL(clicked()),this,SLOT(EnterDungeon()));
@@ -515,7 +515,7 @@ void MainWindow::CreateMaze_Layout()
 
     if((sp_h->value()<6||sp_h->value()>58)||(sp_w->value()<6||sp_w->value()>58))
     {
-        QMessageBox message(QMessageBox::NoIcon, "警告！", "输入的数据需在6-58之间");
+        QMessageBox message(QMessageBox::NoIcon, "Warning！", "Data need to be between 6 and 58");
         message.setIconPixmap(QPixmap(":/info/image/information/warning.png"));
         message.exec();
         return;
@@ -624,7 +624,7 @@ void MainWindow::quit()
     surface->show();//开始界面显示后，主窗口大小还是不变
     this->resize(840,680);//需要重新设置主窗口大小
 
-    surface->showMianMenu();
+    surface->showMainMenu();
     issurface=true;//标识主界面显示过
 }
 void MainWindow::ShowDungeon()
@@ -765,7 +765,7 @@ void MainWindow::QuestionBox(int num)
         temp2=d.y+1;
 
     }
-    QMessageBox message(QMessageBox::Information,"发现箱子！","箱子上写着问号，不知道里面装着什么，是否打开？",QMessageBox::Yes|QMessageBox::No,this);
+    QMessageBox message(QMessageBox::Information,"Vault found！","Open it？",QMessageBox::Yes|QMessageBox::No,this);
     message.setIconPixmap(QPixmap(":/info/image/information/box.png"));
     message.setWindowIcon(QIcon(":/info/image/information/提示.ico"));
         if (message.exec()==QMessageBox::Yes)
@@ -809,7 +809,7 @@ void MainWindow::QuestionBox(int num)
                 break;
             case 11:
             {
-                QMessageBox mes(QMessageBox::NoIcon, "你打开了箱子", "突然从箱子里跳出一只绿鸭子并冲向你，你不得不与之战斗！！！");
+                QMessageBox mes(QMessageBox::NoIcon, "You opened it", "突然从箱子里跳出一只绿鸭子并冲向你，你不得不与之战斗！！！");
                 mes.setWindowIcon(QIcon(":/info/image/information/提示.ico"));
                 mes.setIconPixmap(QPixmap(":/info/image/information/greenDuck.png"));
                 mes.exec();
@@ -1136,7 +1136,7 @@ void MainWindow::ReturnMainMenuPlay()//返回主菜单
     surface->show();//开始界面显示后，主窗口大小还是不变
     this->resize(840,680);//需要重新设置主窗口大小
 
-    surface->showMianMenu();
+    surface->showMainMenu();
     issurface=true;//标识主界面显示过
     d.initialMap();
     updateStatusData();
