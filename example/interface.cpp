@@ -144,8 +144,8 @@ void interface::loading()
 void interface::Quit()
 {
     QMessageBox message(QMessageBox::Information,"Quit","Quit?",QMessageBox::Yes|QMessageBox::No,this);
-    message.setIconPixmap(QPixmap(":/info/image/information/退出.png"));
-    message.setWindowIcon(QIcon(":/info/image/information/关于.ico"));
+    message.setIconPixmap(QPixmap(":/info/image/information/quit.png"));
+    message.setWindowIcon(QIcon(":/info/image/information/about.ico"));
     message.setButtonText(QMessageBox::Yes, QString("Yes"));
     message.setButtonText(QMessageBox::No, QString("No"));
     if(message.exec()==QMessageBox::Yes)
@@ -167,8 +167,8 @@ void interface::CheckBGMstate()
 void interface::AboutShow()
 {
     QMessageBox message(QMessageBox::Information,"About",
-                        "Written By Realself,in SWJTU,2019.08",QMessageBox::Yes,this);
-    message.setIconPixmap(QPixmap(":/info/image/information/关于.ico"));
+                        "Written By ysr, thd, wm, szj,in FDU,2020.05",QMessageBox::Yes,this);
+    message.setIconPixmap(QPixmap(":/info/image/information/about.ico"));
     message.button(QMessageBox::Yes)->hide();//去除按钮
     message.exec();
 }

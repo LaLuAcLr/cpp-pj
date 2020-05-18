@@ -73,6 +73,8 @@
         <file>image/information/greenDuck.png</file>
         <file>image/information/Store.png</file>
         <file>image/information/Character.png</file>
+        <file>image/information/about.ico</file>
+        <file>image/information/quit.png</file>
     </qresource>
     <qresource prefix="/DungeonNew">
         <file>image/DungeonNew/0.png</file>

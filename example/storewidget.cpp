@@ -8,7 +8,7 @@ StoreWidget::StoreWidget(QWidget *parent) : QWidget(parent)
 void StoreWidget::initialStoreWin()
 {
     StoreWin=new QWidget(this);//类中不定义一个主窗口，那么新建的类对象也会没有主窗口
-    QFont font("Microsoft YaHei" ,12, 30);
+    QFont font("Consolas" ,12, 30);
     this->setFont(font);
     StoreWin->setStyleSheet("color:white;background-color:black");
     QLabel *Store_pic=new QLabel(StoreWin);

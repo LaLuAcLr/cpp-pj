@@ -767,7 +767,7 @@ void MainWindow::QuestionBox(int num)
     }
     QMessageBox message(QMessageBox::Information,"Vault found！","Open it？",QMessageBox::Yes|QMessageBox::No,this);
     message.setIconPixmap(QPixmap(":/info/image/information/box.png"));
-    message.setWindowIcon(QIcon(":/info/image/information/提示.ico"));
+    message.setWindowIcon(QIcon(":/info/image/information/about.ico"));
         if (message.exec()==QMessageBox::Yes)
         {
             int Num=rand()%5+8;
@@ -810,7 +810,7 @@ void MainWindow::QuestionBox(int num)
             case 11:
             {
                 QMessageBox mes(QMessageBox::NoIcon, "You opened it", "突然从箱子里跳出一只绿鸭子并冲向你，你不得不与之战斗！！！");
-                mes.setWindowIcon(QIcon(":/info/image/information/提示.ico"));
+                mes.setWindowIcon(QIcon(":/info/image/information/about.ico"));
                 mes.setIconPixmap(QPixmap(":/info/image/information/greenDuck.png"));
                 mes.exec();
 
@@ -833,7 +833,7 @@ void MainWindow::QuestionBox(int num)
             case 12:
             {
                 QMessageBox mes(QMessageBox::NoIcon, "你打开了箱子", "突然从箱子里跳出一只红鸭子并飞向你，你不得不与之战斗！！！");
-                mes.setWindowIcon(QIcon(":/info/image/information/提示.ico"));
+                mes.setWindowIcon(QIcon(":/info/image/information/about.ico"));
                 mes.setIconPixmap(QPixmap(":/info/image/information/flyDuck.png"));
                 mes.exec();
 
