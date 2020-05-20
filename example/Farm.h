@@ -9,31 +9,33 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QMainWindow>
+#include <QGridLayout>
 
-class Farm : public QMainWindow
+class Farm : public QWidget
 {
     Q_OBJECT
 public:
     explicit Farm(QWidget *parent = 0);
 public:
-    void ShowFarm();
-    void init_window();
+    void init_farm();
 private:
     QPainter *painter;
-    QHBoxLayout *MapLayout;
+    QGridLayout *MapLayout;
+    QHBoxLayout *MainLayout;
 private:
     //void paintEvent(QPaintEvent *);
 public:
-    void init_mapWidget();
+    void init_mapWidget();  // farm map
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
 public:
-    void init_infowidget();
+    void init_infowidget(); // info column
 
 private:
-    QWidget *infoWidget;
+    QWidget *infoWidget;    // info column
     QLabel *avatar;
+    QLabel *name;
     QLabel *stamina;
     QLabel *label_stamina;
     QLabel *money;
@@ -41,7 +43,8 @@ private:
     QComboBox *tool;
     QLabel *label_tool;
     QPushButton *mainmenu;
-
+    QPushButton *save;
+    QPushButton *load;
 };
 
 #endif // FARM_H
