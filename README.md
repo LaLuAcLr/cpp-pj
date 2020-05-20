@@ -16,5 +16,15 @@ Put anything you think important in this
 创了两个类: field, hero
 
 --5.16
+
 上传Qt工程模板文件
+
 --5.18
+
+做出开始菜单和种菜界面
+
+做出种菜地图
+
+做出人地交互
+
+--5.20
