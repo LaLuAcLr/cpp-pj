@@ -93,7 +93,7 @@ void StartMenu::Quit()
 void StartMenu::ShowAbout()
 {
     QMessageBox message(QMessageBox::Information,"About",
-                        "Written By ysr, thd, wm, szj,in FDU,2020.05",QMessageBox::Ok,this);
+                        "Written By ysr, thd, wm, szj, in FDU, 2020.05",QMessageBox::Ok,this);
     message.setIconPixmap(QPixmap(":/info/image/information/about.ico"));
     message.setButtonText(QMessageBox::Ok, QString("Close"));
     message.setDefaultButton(QMessageBox::Ok);

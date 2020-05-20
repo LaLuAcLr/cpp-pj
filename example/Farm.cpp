@@ -90,7 +90,7 @@ void Farm::init_infowidget()
     tool = new QComboBox(infoWidget);
     tool->addItems(QStringList{"None", "Hoe", "Seed", "Knife", "Pot"});
     tool->setStyleSheet("border-image: url(:/interface/image/interface/labelbg.png);");
-    tool->setGeometry(150, 150, 100, 40);
+    tool->setGeometry(150, 160, 100, 20);
 
     save = new QPushButton(infoWidget);
     save->setText("Save");
