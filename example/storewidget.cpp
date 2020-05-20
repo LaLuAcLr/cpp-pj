@@ -40,13 +40,13 @@ void StoreWidget::initialStoreWin()
     defOption->setAlignment(Qt::AlignCenter);
     exitOption->setAlignment(Qt::AlignCenter);
 
-    text1->setText("你若给我 20 个金币");
-    text2->setText("我就可以帮你");
-    hpOption->setText("提升 100 点生命");
-    mpOption->setText("提升 20 点魔法");
-    atkOption->setText("提升 2 点攻击力");
-    defOption->setText("提升 4 点防御力");
-    exitOption->setText("离开商店");
+    text1->setText("If you give me 20 coins");
+    text2->setText("I can help you");
+    hpOption->setText("raise 100 HP");
+    mpOption->setText("Raise 20 MP");
+    atkOption->setText("Raise 2 Atk");
+    defOption->setText("Raise 4 Def");
+    exitOption->setText("Leave");
 
 
     OptionBox->setGeometry(32,112,192,32);

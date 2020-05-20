@@ -13,6 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+    Farm.cpp \
+    StartMenu.cpp \
         mainwindow.cpp \
     maze.cpp \
     interface.cpp \
@@ -20,6 +22,8 @@ SOURCES += main.cpp\
     storewidget.cpp
 
 HEADERS  += mainwindow.h \
+    Farm.h \
+    StartMenu.h \
     maze.h \
     interface.h \
     Dungeon.h \

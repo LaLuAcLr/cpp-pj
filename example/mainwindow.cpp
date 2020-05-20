@@ -136,7 +136,7 @@ void MainWindow::initialControlWidget()
     Controlwidget->setStyleSheet("background-color:lightGray");
     QString button_style="QPushButton{background-color:white; color: black;border-radius:1px;border:2px groove gray;border-style:outset;}"
                          "QPushButton:hover{background-color:lightGray; color: black;}"
-                         "QPushButton:pressed{background-color:gray;border-style:inset;}";
+                         "QPushButton:pressed{background-color:gray;border-style:inset;}";  //开始菜单
 
     QLabel *label_w=new QLabel;
     QLabel *label_h=new QLabel;

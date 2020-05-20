@@ -4,6 +4,8 @@
 #include "hero.h"
 
 class Field {
+    
+public:
     enum State
     {
         Orig,
@@ -12,16 +14,13 @@ class Field {
         Poted,
         Harvest
     };
-
-public:
-    Field() : _state{Orig} {}
-    Field(State s) : _state{s} {}
+    Field() : _state{ Orig } {}
+    Field(State s) : _state{ s } {}
 
     State get_state() const { return _state; }
-    State &set_state(State s) { _state = s; }
+    void set_state(State s) { _state = s; }
 
 private:
     State _state;
-}
-
+};
 #endif

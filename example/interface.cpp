@@ -63,10 +63,10 @@ interface::interface(QWidget *parent) :
 
     BGM=new QMediaPlayer(this);
     BGM->setMedia(QUrl("qrc:/music/music/maze_main_theme.mp3"));//相对路径
-    BGM->setVolume(50);
+    BGM->setVolume(20);
     BGM->play();
     BGMTimer=new QTimer(this);
-    connect(BGMTimer,SIGNAL(timeout()),this,SLOT(CheckBGMstate()));
+    connect(BGMTimer,SIGNAL(timeout()),this,SLOT(CheckBGMstate())); //每10秒检查播放
     BGMTimer->start(10);
 }
 
@@ -76,7 +76,7 @@ void interface::paintEvent(QPaintEvent*)
     painter = new QPainter(this);
     if(!isok)
     {
-        QImage pixmap(":/interface/image/interface/StartPage.png");//开始页
+        QImage pixmap(":/interface/image/interface/startmenu.png");//开始页
         painter->drawImage(geometry(),pixmap);
     }
     else
@@ -143,9 +143,10 @@ void interface::loading()
 }
 void interface::Quit()
 {
-    QMessageBox message(QMessageBox::Information,"Quit","Quit?",QMessageBox::Yes|QMessageBox::No,this);
+    QMessageBox message(QMessageBox::Question,"Quit","Quit?",QMessageBox::Yes|QMessageBox::No,this);
     message.setIconPixmap(QPixmap(":/info/image/information/quit.png"));
     message.setWindowIcon(QIcon(":/info/image/information/about.ico"));
+    message.setDefaultButton(QMessageBox::No);
     message.setButtonText(QMessageBox::Yes, QString("Yes"));
     message.setButtonText(QMessageBox::No, QString("No"));
     if(message.exec()==QMessageBox::Yes)
@@ -167,8 +168,9 @@ void interface::CheckBGMstate()
 void interface::AboutShow()
 {
     QMessageBox message(QMessageBox::Information,"About",
-                        "Written By ysr, thd, wm, szj,in FDU,2020.05",QMessageBox::Yes,this);
+                        "Written By ysr, thd, wm, szj,in FDU,2020.05",QMessageBox::Ok,this);
     message.setIconPixmap(QPixmap(":/info/image/information/about.ico"));
-    message.button(QMessageBox::Yes)->hide();//去除按钮
+    message.setButtonText(QMessageBox::Ok, QString("Close"));
+    message.setDefaultButton(QMessageBox::Ok);
     message.exec();
 }

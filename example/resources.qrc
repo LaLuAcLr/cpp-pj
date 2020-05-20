@@ -169,5 +169,8 @@
         <file>image/interface/PushButtonPressbg.png</file>
         <file>image/interface/MazeDemo.png</file>
         <file>image/interface/SetNamePage.PNG</file>
+        <file>image/interface/startmenu.png</file>
+        <file>image/interface/farm.png</file>
+        <file>image/interface/man.png</file>
     </qresource>
 </RCC>
