@@ -28,3 +28,13 @@ Put anything you think important in this
 做出人地交互
 
 --5.20
+
+做出界面切换
+
+做出人物移动
+
+做出界面方块布局
+
+做出资料读取
+
+--5.22

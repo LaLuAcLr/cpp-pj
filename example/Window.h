@@ -4,6 +4,7 @@
 #include "Farm.h"
 #include <QMainWindow>
 #include <QWidget>
+#include <QKeyEvent>
 
 class Window : public QMainWindow
 {
@@ -11,16 +12,19 @@ class Window : public QMainWindow
 
 public:
     explicit Window(QWidget *parent = 0);
-    ~Window();
 
 private:
     StartMenu *startmenu;
     Farm *farm;
     QWidget *MainWidget;
 
+public slots:
+    void show_farm();
+    void show_mainmenu();
+
 private:
     void init_window();
-    void show_farm();
+
 
 };
 

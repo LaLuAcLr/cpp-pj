@@ -16,6 +16,7 @@ SOURCES += main.cpp\
     Farm.cpp \
     StartMenu.cpp \
     Window.cpp \
+    exp.cpp \
         mainwindow.cpp \
     maze.cpp \
     interface.cpp \

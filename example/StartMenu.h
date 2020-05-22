@@ -17,12 +17,12 @@ public:
     explicit StartMenu(QWidget *parent = 0);
 public:
     QTimer *timer;
+    QPushButton *button_start;
+    QPushButton *button_load;
     void ShowMainMenu();
 
 private:
     QLabel *msgLabel;
-    QPushButton *button_start;
-    QPushButton *button_load;
     QPushButton *button_quit;
     QPushButton *button_about;
     QProgressBar *probar;

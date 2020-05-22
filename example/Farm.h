@@ -16,6 +16,9 @@ class Farm : public QWidget
     Q_OBJECT
 public:
     explicit Farm(QWidget *parent = 0);
+
+public:
+    QPushButton *mainmenu;
 public:
     void init_farm();
 private:
@@ -26,9 +29,11 @@ private:
     //void paintEvent(QPaintEvent *);
 public:
     void init_mapWidget();  // farm map
+    void init_map();
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
+    QWidget *map[10][10];
 public:
     void init_infowidget(); // info column
 
@@ -42,7 +47,6 @@ private:
     QLabel *label_money;
     QComboBox *tool;
     QLabel *label_tool;
-    QPushButton *mainmenu;
     QPushButton *save;
     QPushButton *load;
 };

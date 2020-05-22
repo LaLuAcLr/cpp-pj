@@ -1,6 +1,5 @@
 ﻿#include "Farm.h"
 #include <QPixmap>
-#include <QRectF>
 #include <QStringList>
 
 Farm::Farm(QWidget *parent) :
@@ -12,34 +11,51 @@ Farm::Farm(QWidget *parent) :
 
 void Farm::init_farm()
 {
-    MapLayout = new QGridLayout;
-    MapLayout->setContentsMargins(0, 0, 0, 0);
-    MapLayout->setSpacing(0);
-    MainLayout = new QHBoxLayout;
+
+    MainLayout = new QHBoxLayout(this);
     MainLayout->setContentsMargins(0, 0, 0, 0);
     MainLayout->setSpacing(0);
 
     init_mapWidget();
     init_infowidget();
 
-    MapLayout->addWidget(mapWidget);
-    MainLayout->addLayout(MapLayout);
+    MainLayout->addWidget(mapWidget);
     MainLayout->addWidget(infoWidget);
 
-    this->setLayout(MainLayout);
+    MapLayout = new QGridLayout(mapWidget);
+    MapLayout->setContentsMargins(0, 0, 0, 0);
+    MapLayout->setSpacing(0);
+
+    init_map();
 
 }
 
 void Farm::init_mapWidget()
 {
-    mapWidget = new QWidget(this);
+    mapWidget = new QWidget();
     mapWidget->setMinimumSize(840, 680);
-    mapWidget->setStyleSheet("border-image:url(:/interface/image/interface/farm.png)");
+    mapWidget->setStyleSheet("border-image:url(:/interface/image/interface/farm.png);");
+
+}
+
+void Farm::init_map()
+{
+    int i, j;
+    for (i=0;i<10;++i)
+    {
+        for (j=0;j<10;++j)
+        {
+            map[i][j] = new QWidget();
+            map[i][j]->setMinimumSize(84, 68);
+            map[i][j]->setStyleSheet("border-image:url(:/interface/image/interface/man.png);");
+            MapLayout->addWidget(map[i][j], i, j);
+        }
+    }
 }
 
 void Farm::init_infowidget()
 {
-    infoWidget = new QWidget(this);
+    infoWidget = new QWidget();
     QFont fontLabel("Consolas", 12);
     QFont fontNum("Consolas", 10);
     QFont fontName("Consolas", 10);
