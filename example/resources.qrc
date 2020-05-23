@@ -75,6 +75,7 @@
         <file>image/information/Character.png</file>
         <file>image/information/about.ico</file>
         <file>image/information/quit.png</file>
+        <file>image/information/none.png</file>
     </qresource>
     <qresource prefix="/DungeonNew">
         <file>image/DungeonNew/0.png</file>

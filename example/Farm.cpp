@@ -1,6 +1,12 @@
 ﻿#include "Farm.h"
 #include <QPixmap>
+#include <QRectF>
 #include <QStringList>
+#include <QMessageBox>
+#include <QStyleFactory>
+#include <QPalette>
+#include <QTime>
+#include <QKeyEvent>
 
 Farm::Farm(QWidget *parent) :
     QWidget(parent)
@@ -8,7 +14,10 @@ Farm::Farm(QWidget *parent) :
     this->setMinimumSize(1040, 680);
     init_farm();
 }
+Farm::~Farm()
+{
 
+}
 void Farm::init_farm()
 {
 
@@ -27,7 +36,7 @@ void Farm::init_farm()
     MapLayout->setSpacing(0);
 
     init_map();
-
+    init_Character();
 }
 
 void Farm::init_mapWidget()
@@ -47,15 +56,35 @@ void Farm::init_map()
         {
             map[i][j] = new QWidget();
             map[i][j]->setMinimumSize(84, 68);
-            map[i][j]->setStyleSheet("border-image:url(:/interface/image/interface/man.png);");
-            MapLayout->addWidget(map[i][j], i, j);
+
+            //if(i==m.x&&j==m.y)
+            //    map[i][j]->setStyleSheet("border-image:url(:/infor/image/information/Character.png);");
+            if(m.map[m.floor][i][j]>=10&&m.map[m.floor][i][j]<20)
+                map[i][j]->setStyleSheet(m.TerrainString[m.map[m.floor][i][j]-10]);
+            else
+                map[i][j]->setStyleSheet("border-image:url(:/infor/image/information/none.png);");
+            MapLayout->addWidget(map[i][j],i,j);
         }
     }
 }
-
+void Farm::init_Character()
+{
+    Character = new QWidget();
+    Character->setMinimumSize(84, 68);
+    Character->setStyleSheet("border-image:url(:/info/image/information/Character.png);");
+    MapLayout->addWidget(Character,m.x,m.y);
+}
+void Farm::regenarate_Character()
+{
+    Character->hide();
+    Character = new QWidget();
+    Character->setMinimumSize(84, 68);
+    Character->setStyleSheet("border-image:url(:/info/image/information/Character.png);");
+    MapLayout->addWidget(Character,m.x,m.y);
+}
 void Farm::init_infowidget()
 {
-    infoWidget = new QWidget();
+    infoWidget = new QWidget(this);
     QFont fontLabel("Consolas", 12);
     QFont fontNum("Consolas", 10);
     QFont fontName("Consolas", 10);
@@ -126,3 +155,5 @@ void Farm::init_infowidget()
     infoWidget->setMinimumSize(300,680);
     infoWidget->setStyleSheet("color:white;border-image: url(:/interface/image/interface/infobg.png);");
 }
+
+

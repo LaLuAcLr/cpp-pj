@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     Window.cpp \
     exp.cpp \
         mainwindow.cpp \
+    map.cpp \
     maze.cpp \
     interface.cpp \
     Dungeon.cpp \
@@ -27,6 +28,7 @@ HEADERS  += mainwindow.h \
     Farm.h \
     StartMenu.h \
     Window.h \
+    map.h \
     maze.h \
     interface.h \
     Dungeon.h \
