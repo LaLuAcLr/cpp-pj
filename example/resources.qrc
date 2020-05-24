@@ -64,17 +64,9 @@
         <file>image/information/warning.png</file>
         <file>image/information/yellowkey.png</file>
         <file>image/information/start.png</file>
-        <file>image/information/box.png</file>
-        <file>image/information/greenmushroom.png</file>
-        <file>image/information/orangemushroom.png</file>
-        <file>image/information/redmushroom.png</file>
-        <file>image/information/badmushroom.png</file>
         <file>image/information/flyDuck.png</file>
         <file>image/information/greenDuck.png</file>
         <file>image/information/Store.png</file>
-        <file>image/information/Character.png</file>
-        <file>image/information/about.ico</file>
-        <file>image/information/quit.png</file>
         <file>image/information/none.png</file>
     </qresource>
     <qresource prefix="/DungeonNew">
@@ -162,16 +154,9 @@
         <file>music/maze_main_theme.mp3</file>
     </qresource>
     <qresource prefix="/interface">
-        <file>image/interface/Controlbg.png</file>
-        <file>image/interface/infobg.png</file>
-        <file>image/interface/labelbg.png</file>
         <file>image/interface/StartPage.png</file>
-        <file>image/interface/PushButtonhoverbg.png</file>
-        <file>image/interface/PushButtonPressbg.png</file>
         <file>image/interface/MazeDemo.png</file>
         <file>image/interface/SetNamePage.PNG</file>
-        <file>image/interface/startmenu.png</file>
-        <file>image/interface/farm.png</file>
-        <file>image/interface/man.png</file>
     </qresource>
+    <qresource prefix="/now"/>
 </RCC>

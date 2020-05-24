@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>now/about.ico</file>
+        <file>now/badmushroom.png</file>
+        <file>now/Character.png</file>
+        <file>now/Controlbg.png</file>
+        <file>now/farm.png</file>
+        <file>now/greenchomper.png</file>
+        <file>now/greenmushroom.png</file>
+        <file>now/infobg.png</file>
+        <file>now/labelbg.png</file>
+        <file>now/man.png</file>
+        <file>now/orangemushroom.png</file>
+        <file>now/PushButtonhoverbg.png</file>
+        <file>now/PushButtonPressbg.png</file>
+        <file>now/quit.png</file>
+        <file>now/redmushroom.png</file>
+        <file>now/startmenu.png</file>
+        <file>now/box.png</file>
+    </qresource>
+</RCC>

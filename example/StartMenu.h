@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QProgressBar>
-#include <QTimer>
 #include <QLabel>
 #include <QPainter>
 #include <QMessageBox>
@@ -16,10 +15,8 @@ class StartMenu : public QWidget
 public:
     explicit StartMenu(QWidget *parent = 0);
 public:
-    QTimer *timer;
     QPushButton *button_start;
     QPushButton *button_load;
-    void ShowMainMenu();
 
 private:
     QLabel *msgLabel;
@@ -32,7 +29,6 @@ private:
 public slots:
     void Quit();
     void ShowAbout();
-    void NewGame();
 };
 
 

@@ -1,57 +1,41 @@
 ﻿#ifndef FARM_H
 #define FARM_H
 #include <QWidget>
-#include "StartMenu.h"
-#include <QApplication>
 #include <QLabel>
 #include <QComboBox>
 #include <QPushButton>
-#include <QHBoxLayout>
-#include <QMainWindow>
 #include <QGridLayout>
-#include <QKeyEvent>
-#include <QDebug>
-#include <QGridLayout>
-#include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QMainWindow>
 #include <QWidget>
-#include <QSpinBox>
 #include <QPushButton>
-#include <QLineEdit>
 #include <QKeyEvent>
-#include <QResizeEvent>//QResizeEvent 是主窗口的变化事件
-#include <QSequentialAnimationGroup>
-#include <QPropertyAnimation>
-#include <QPoint>
-#include <QProgressBar>
 #include "map.h"
+#include "StartMenu.h"
 
 class Farm : public QWidget
 {
     Q_OBJECT
 public:
     explicit Farm(QWidget *parent = 0);
-    ~Farm();
-public:
-    void init_farm();
 private:
-    QPainter *painter;
-    QGridLayout *MapLayout;
-    QHBoxLayout *MainLayout;
-    QGridLayout *CharacterLayout;
-public:
+    void init_farm();
     void init_mapWidget();  // farm map
     void init_map();
     void init_Character();
+    void init_infowidget(); // info column
+private:
+    QGridLayout *MapLayout;
+    QHBoxLayout *MainLayout;
+public:
     void regenarate_Character();
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
-    QWidget *map[10][10];
+    QWidget *map[13][15];
     QWidget *Character;
-public:
-    void init_infowidget(); // info column
+    int     Day;
+public slots:
+    void add_day_func();
 
 private:
     QWidget *infoWidget;    // info column
@@ -63,6 +47,10 @@ private:
     QLabel *label_money;
     QComboBox *tool;
     QLabel *label_tool;
+    QComboBox *seed;
+    QLabel *label_seed;
+    QLabel *label_day;
+    QPushButton *add_day;
     QPushButton *save;
     QPushButton *load;
 public:

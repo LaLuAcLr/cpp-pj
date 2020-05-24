@@ -67,11 +67,11 @@ void Map::initialportal()
 
 void Map::initialTerrainString()//动态贴图（地图物件）
 {
-    TerrainString[0]="border-image:url(:/info/image/information/greenmushroom.png);";
-    TerrainString[1]="border-image:url(:/info/image/information/orangemushroom.png);";
-    TerrainString[2]="border-image:url(:/info/image/information/badmushroom.png);";
-    TerrainString[3]="border-image:url(:/info/image/information/box.png);";
-    TerrainString[4]="border-image:url(:/info/image/information/redmushroom.png);";
+    TerrainString[0]="border-image:url(:/now/greenmushroom.png);";
+    TerrainString[1]="border-image:url(:/now/orangemushroom.png);";
+    TerrainString[2]="border-image:url(:/now/badmushroom.png);";
+    TerrainString[3]="border-image:url(:/now/box.png);";
+    TerrainString[4]="border-image:url(:/now/redmushroom.png);";
 }
 /*
 void Map::initialNPCpic()//动态贴图（npc）
@@ -98,11 +98,11 @@ Map::Map()
     map = new int** [Total_Floor];
     for (int i = 0; i < Total_Floor; i++)
     {
-        map[i] = new int* [12];
-        for (int j = 0; j < 12; j++)
+        map[i] = new int* [13];
+        for (int j = 0; j < 13; j++)
         {
-            map[i][j] = new int[16];
-            for (int k = 0; k < 16; k++)
+            map[i][j] = new int[15];
+            for (int k = 0; k < 15; k++)
             {
                 map[i][j][k] = 0;
             }
@@ -126,22 +126,25 @@ void Map::initialMap()
 
         if (num == 1)
         {
-            int tempmap[10][10] = {
-                14,14,14,14,14,14,14,14,1,1,
-                14,14,14,14,14,14,14,14,1,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,1,1,1,1,1,10,1,1,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,1,1,1,1,1,11,1,1,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,1,1,1,1,1,1,1,1,1
+            int tempmap[13][15] = {
+                14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,
+                14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,10,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,11,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
             };
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < 16; j++)
+                for (int j = 0; j < 15; j++)
                 {
                     map[num - 1][i][j] = tempmap[i][j];
                 }

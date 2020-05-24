@@ -2,7 +2,6 @@
 #include "StartMenu.h"
 #include "Farm.h"
 #include "Window.h"
-#include "exp.cpp"
 #include <QDesktopWidget>
 #include <QApplication>
 

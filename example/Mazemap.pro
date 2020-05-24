@@ -16,7 +16,6 @@ SOURCES += main.cpp\
     Farm.cpp \
     StartMenu.cpp \
     Window.cpp \
-    exp.cpp \
         mainwindow.cpp \
     map.cpp \
     maze.cpp \
@@ -41,4 +40,4 @@ CONFIG += resources_big
 RC_ICONS = Maze&Dungeon.ico
 
 RESOURCES += \
-    resources.qrc
+    now.qrc
