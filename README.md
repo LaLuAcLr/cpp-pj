@@ -38,3 +38,15 @@ Put anything you think important in this
 做出资料读取
 
 --5.22
+
+做出方向
+
+做出天数
+
+做出种子种类
+
+做出传送门
+
+做出人物移动动画
+
+--5.24
