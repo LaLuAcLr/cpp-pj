@@ -23,8 +23,8 @@ struct Items
 struct charactor
 {
     QString name;
-    int status;
-    int fatigue;//疲劳度
+    int money;
+    int stamina;//疲劳度
     Tools tool;//手持工具
     Items item;//物品
 };

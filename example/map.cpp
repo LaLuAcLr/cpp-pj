@@ -20,8 +20,8 @@ void Map::initialitem(struct Items& item)
 void Map::initialrole()
 {
     role.name = "experimenter no.1";
-    role.status = 0;
-    role.fatigue = 0;
+    role.money = 2000;
+    role.stamina = 100;
     initialtool(role.tool);
     initialitem(role.item);
 }

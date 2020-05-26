@@ -169,13 +169,13 @@ void Farm::init_infowidget()
     stamina = new QLabel(infoWidget);
     stamina->setFont(fontNum);
     stamina->setStyleSheet("border-image: url(:/now/labelbg.png);");
-    stamina->setText("100");
+    stamina->setText(QString::number(m.role.stamina));
     stamina->setGeometry(150, 70, 40, 40);
 
     money = new QLabel(infoWidget);
     money->setFont(fontNum);
     money->setStyleSheet("border-image: url(:/now/labelbg.png);");
-    money->setText("2000");
+    money->setText(QString::number(m.role.money));
     money->setGeometry(150, 110, 40, 40);
 
     tool = new QComboBox(infoWidget);

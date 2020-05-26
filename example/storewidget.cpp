@@ -114,15 +114,6 @@ void StoreWidget::keyPressEvent(QKeyEvent *event)
             {
                 return;
             }
-//            if(chooseOption==0||chooseOption==1)
-//            {
-                text1->setText(QString::fromStdWString(L"你若给我 ") +
-                               QString::number(Nextstore_price) + QString::fromStdWString(L" 个金币"));
-                text2->setText(QString::fromStdWString(L"我就可以帮你"));
-                op1->setText(QString::fromStdWString(L"提升 ") +
-                                  QString::number(100 * (BuyTimes +1 )) + QString::fromStdWString(L" 点生命"));
-                op2->setText(QString::fromStdWString(L"提升 ") +
-                                  QString::number(20 * (BuyTimes +1 )) + QString::fromStdWString(L" 点魔法"));
 
             BuyTimes++;
 
