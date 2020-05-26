@@ -11,7 +11,7 @@
 #include <QKeyEvent>
 #include "map.h"
 #include "StartMenu.h"
-
+#include "storewidget.h"
 class Farm : public QWidget
 {
     Q_OBJECT
@@ -22,17 +22,20 @@ private:
     void init_mapWidget();  // farm map
     void init_map();
     void init_Character();
+    void init_store();
     void init_infowidget(); // info column
 private:
     QGridLayout *MapLayout;
     QHBoxLayout *MainLayout;
 public:
     void regenarate_Character();
+    void regenarate_Map();
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
     QWidget *map[13][15];
     QWidget *Character;
+
     int     Day;
 public slots:
     void add_day_func();
@@ -55,6 +58,7 @@ private:
     QPushButton *load;
 public:
     Map m;
+    StoreWidget *Store;
     QPushButton *mainmenu;
 };
 

@@ -14,38 +14,38 @@ void StoreWidget::initialStoreWin()
     QLabel *Store_pic=new QLabel(StoreWin);
     text1=new QLabel(StoreWin);
     text2=new QLabel(StoreWin);
-    hpOption=new QLabel(StoreWin);
-    mpOption=new QLabel(StoreWin);
-    atkOption=new QLabel(StoreWin);
-    defOption=new QLabel(StoreWin);
+    op1=new QLabel(StoreWin);
+    op2=new QLabel(StoreWin);
+    op3=new QLabel(StoreWin);
+    op4=new QLabel(StoreWin);
     exitOption=new QLabel(StoreWin);
     OptionBox=new QGraphicsView(StoreWin);//最后构造的控件会在最上面
     OptionBox->setStyleSheet("border:3px solid #FFFFFF;");
 
     Store_pic->setStyleSheet("border-image: url(:/info/image/information/Store.png);");
     Store_pic->setGeometry(10,10,30,30);
-    text1->setGeometry(50,10,192,30);
-    text2->setGeometry(50,50,192,30);
-    hpOption->setGeometry(32,112,192,32);
-    mpOption->setGeometry(32,160,192,32);
-    atkOption->setGeometry(32,208,192,32);
-    defOption->setGeometry(32,256,192,32);
+    text1->setGeometry(32,10,192,32);
+    text2->setGeometry(32,50,192,32);
+    op1->setGeometry(32,112,192,32);
+    op2->setGeometry(32,160,192,32);
+    op3->setGeometry(32,208,192,32);
+    op4->setGeometry(32,256,192,32);
     exitOption->setGeometry(32,304,192,32);
 
     text1->setAlignment(Qt::AlignCenter);
     text2->setAlignment(Qt::AlignCenter);
-    hpOption->setAlignment(Qt::AlignCenter);
-    mpOption->setAlignment(Qt::AlignCenter);
-    atkOption->setAlignment(Qt::AlignCenter);
-    defOption->setAlignment(Qt::AlignCenter);
+    op1->setAlignment(Qt::AlignCenter);
+    op2->setAlignment(Qt::AlignCenter);
+    op3->setAlignment(Qt::AlignCenter);
+    op4->setAlignment(Qt::AlignCenter);
     exitOption->setAlignment(Qt::AlignCenter);
 
-    text1->setText("If you give me 20 coins");
+    text1->setText("store");
     text2->setText("I can help you");
-    hpOption->setText("raise 100 HP");
-    mpOption->setText("Raise 20 MP");
-    atkOption->setText("Raise 2 Atk");
-    defOption->setText("Raise 4 Def");
+    op1->setText("buy apple seed");
+    op2->setText("buy pear seed");
+    op3->setText("buy banana seed");
+    op4->setText("buy knife");
     exitOption->setText("Leave");
 
 
@@ -119,17 +119,10 @@ void StoreWidget::keyPressEvent(QKeyEvent *event)
                 text1->setText(QString::fromStdWString(L"你若给我 ") +
                                QString::number(Nextstore_price) + QString::fromStdWString(L" 个金币"));
                 text2->setText(QString::fromStdWString(L"我就可以帮你"));
-                hpOption->setText(QString::fromStdWString(L"提升 ") +
+                op1->setText(QString::fromStdWString(L"提升 ") +
                                   QString::number(100 * (BuyTimes +1 )) + QString::fromStdWString(L" 点生命"));
-                mpOption->setText(QString::fromStdWString(L"提升 ") +
+                op2->setText(QString::fromStdWString(L"提升 ") +
                                   QString::number(20 * (BuyTimes +1 )) + QString::fromStdWString(L" 点魔法"));
-
-//            }
-//            else
-//            {
-//                text1->setText(QString::fromStdWString(L"你若给我 ") +
-//                               QString::number(Nextstore_price) + QString::fromStdWString(L" 个金币"));
-//            }
 
             BuyTimes++;
 
@@ -139,6 +132,7 @@ void StoreWidget::keyPressEvent(QKeyEvent *event)
         {
             this->hide();
             StoreWinisShow=false;
+            parentWidget()->setFocus();
             chooseOption=0;//选项框回到起始位置
             OptionBox->setGeometry(32,112,192,32);
             return;

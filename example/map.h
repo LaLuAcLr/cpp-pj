@@ -64,6 +64,7 @@ private:
     void initialitem(struct Items& item);
     void initialportal();
     void initialTerrainString();
+    void initialCharacterString();
     //void initialNPCpic();//初始化npc图片
     void initialregion();
     void initialnpc();
@@ -73,12 +74,14 @@ public:
     NPC npc[10];
     portal p[10];
     QString TerrainString[20];
+    QString CharacterString[10];
     //string NPC_pic[20];//npc贴图字符串
     int floor;
     int Total_Floor;
     int*** map;//三维数组
     int x;//角色位置
     int y;
+    int direction;//角色方向
     int calendar;
 private:
 };

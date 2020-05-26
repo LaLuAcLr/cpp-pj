@@ -26,9 +26,9 @@ void Farm::init_farm()
     MapLayout = new QGridLayout(mapWidget);
     MapLayout->setContentsMargins(0, 0, 0, 0);
     MapLayout->setSpacing(0);
-
     init_map();
     init_Character();
+    init_store();
 }
 
 void Farm::init_mapWidget()
@@ -37,6 +37,13 @@ void Farm::init_mapWidget()
     mapWidget->setMinimumSize(840, 680);
     mapWidget->setStyleSheet("border-image:url(:/now/farm.png);");
 
+}
+
+void Farm::init_store()
+{
+    Store=new StoreWidget(this);
+    Store->setGeometry(292,192,256,352);
+    Store->hide();
 }
 
 void Farm::init_map()
@@ -51,6 +58,12 @@ void Farm::init_map()
 
             if(m.map[m.floor][i][j]>=10&&m.map[m.floor][i][j]<20)
                 map[i][j]->setStyleSheet(m.TerrainString[m.map[m.floor][i][j]-10]);
+            else if(m.map[m.floor][i][j]>=50)
+                map[i][j]->setStyleSheet("border-image:url(:/now/box.png);");
+            else if(m.map[m.floor][i][j]>=40&&m.map[m.floor][i][j]<50){
+                map[i][j]->setStyleSheet("border-image:url(:/now/man.png);");
+                //map[i][j]->setMinimumSize(100,100);
+            }
             else
                 map[i][j]->setStyleSheet("border-image:url();");
             MapLayout->addWidget(map[i][j],i,j);
@@ -61,7 +74,7 @@ void Farm::init_Character()
 {
     Character = new QWidget();
     Character->setMinimumSize(64, 45);
-    Character->setStyleSheet("border-image:url(:/now/Character.png);");
+    Character->setStyleSheet(m.CharacterString[m.direction-1]);
     MapLayout->addWidget(Character,m.x,m.y);
 }
 void Farm::regenarate_Character()
@@ -69,8 +82,38 @@ void Farm::regenarate_Character()
     Character->hide();
     Character = new QWidget();
     Character->setMinimumSize(64, 45);
-    Character->setStyleSheet("border-image:url(:/now/Character.png);");
+    Character->setStyleSheet(m.CharacterString[m.direction-1]);
     MapLayout->addWidget(Character,m.x,m.y);
+}
+void Farm::regenarate_Map()
+{
+    int i, j;
+    for (i=0;i<13;++i)
+    {
+        for (j=0;j<15;++j)
+        {
+            map[i][j]->hide();
+        }
+    }
+    for (i=0;i<13;++i)
+    {
+        for (j=0;j<15;++j)
+        {
+            map[i][j] = new QWidget();
+            map[i][j]->setMinimumSize(64, 45);
+
+            if(m.map[m.floor][i][j]>=10&&m.map[m.floor][i][j]<20)
+                map[i][j]->setStyleSheet(m.TerrainString[m.map[m.floor][i][j]-10]);
+            else if(m.map[m.floor][i][j]>=50)
+                map[i][j]->setStyleSheet("border-image:url(:/now/box.png);");
+            else if(m.map[m.floor][i][j]>=40&&m.map[m.floor][i][j]<50)
+                map[i][j]->setStyleSheet("border-image:url(:/now/man.png);");
+            else
+                map[i][j]->setStyleSheet("border-image:url();");
+            MapLayout->addWidget(map[i][j],i,j);
+        }
+    }
+    regenarate_Character();
 }
 void Farm::add_day_func()
 {
@@ -81,6 +124,7 @@ void Farm::add_day_func()
 void Farm::init_infowidget()
 {
     infoWidget = new QWidget(this);
+    infoWidget->setFocusPolicy(Qt::NoFocus);
     QFont fontLabel("Consolas", 12);
     QFont fontNum("Consolas", 10);
     QFont fontName("Consolas", 10);

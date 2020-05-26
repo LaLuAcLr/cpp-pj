@@ -1,5 +1,5 @@
-﻿#ifndef STOREWIDGET_H
-#define STOREWIDGET_H
+#ifndef NPC_H
+#define NPC_H
 
 #include <QWidget>
 #include <QLabel>
@@ -7,11 +7,12 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QShowEvent>
-class StoreWidget : public QWidget
+
+class NPC : public QWidget
 {
     Q_OBJECT
 public:
-    explicit StoreWidget(QWidget *parent = 0);
+    explicit NPC(QWidget *parent = 0);
     int chooseOption; //选择了第几项
     int BuyTimes;
     QTimer *haveBuyTimer;//购买计时器
@@ -28,10 +29,10 @@ private:
     QWidget *StoreWin;
     QLabel *text1;
     QLabel *text2;
-    QLabel *op1;
-    QLabel *op2;
-    QLabel *op3;
-    QLabel *op4;
+    QLabel *hpOption;
+    QLabel *mpOption;
+    QLabel *atkOption;
+    QLabel *defOption;
     QLabel *exitOption;
 private:
     void initialStoreWin();//初始化商店界面
@@ -41,4 +42,4 @@ public slots:
     void OptionBoxborderChanged();
 };
 
-#endif // STOREWIDGET_H
+#endif // NPC_H

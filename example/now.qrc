@@ -17,5 +17,15 @@
         <file>now/redmushroom.png</file>
         <file>now/startmenu.png</file>
         <file>now/box.png</file>
+        <file>image/DungeonNew/Mario/down00.png</file>
+        <file>image/DungeonNew/Mario/left00.png</file>
+        <file>image/DungeonNew/Mario/left01.png</file>
+        <file>image/DungeonNew/Mario/left02.png</file>
+        <file>image/DungeonNew/Mario/left03.png</file>
+        <file>image/DungeonNew/Mario/right00.png</file>
+        <file>image/DungeonNew/Mario/right01.png</file>
+        <file>image/DungeonNew/Mario/right02.png</file>
+        <file>image/DungeonNew/Mario/right03.png</file>
+        <file>image/DungeonNew/Mario/up00.png</file>
     </qresource>
 </RCC>
