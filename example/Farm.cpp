@@ -73,7 +73,7 @@ void Farm::init_Character()
 {
     Character = new character(mapWidget);
     Character->setStyleSheet("border-image:url();");
-    Character->move(0, 80);
+    Character->move(0, 120);
 }
 /*void Farm::regenarate_Character()
 {

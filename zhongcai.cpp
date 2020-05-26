@@ -13,7 +13,7 @@ using namespace std;
 //Knife,
 //Pot,
 //Seed
-void userinteraction(Field f, Hero h) {
+void hero_field_interaction(Field f, Hero h) {
 	auto l = f.get_state();
 	auto a = h.get_tool();
 	if (l == Field::Orig)
@@ -21,7 +21,7 @@ void userinteraction(Field f, Hero h) {
 		if (a == Hero::Hoe) {
 			cout << "清除杂草" << endl;
 			f.set_state(Field::Hoed);
-		}			
+		}
 		else
 			cout << "杂草未清理无法操作" << endl;
 	}
@@ -30,7 +30,7 @@ void userinteraction(Field f, Hero h) {
 		if (a == Hero::Seed) {
 			cout << "种菜" << endl;
 			f.set_state(Field::Seeded);
-		}			
+		}
 		else if(a == Hero::Hoe)
 			cout << "无需清理杂草" << endl;
 		else if (a == Hero::Pot)
@@ -56,7 +56,7 @@ void userinteraction(Field f, Hero h) {
 		if (a == Hero::Knife) {
 			cout << "收割" << endl;
 			f.set_state(Field::Orig);
-		}			
+		}
 		else if (a == Hero::Hoe)
 			cout << "无需清理杂草" << endl;
 		else if (a == Hero::Pot)
