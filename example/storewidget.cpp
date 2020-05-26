@@ -3,11 +3,11 @@
 StoreWidget::StoreWidget(QWidget *parent) : QWidget(parent)
 {
     initialStoreWin();
-    //StoreWin->setFocus();//构造函数中设置焦点为当前窗口无用，因为窗口还没显示出来
+
 }
 void StoreWidget::initialStoreWin()
 {
-    StoreWin=new QWidget(this);//类中不定义一个主窗口，那么新建的类对象也会没有主窗口
+    StoreWin=new QWidget(this);
     QFont font("Consolas" ,12, 30);
     this->setFont(font);
     StoreWin->setStyleSheet("color:white;background-color:black");

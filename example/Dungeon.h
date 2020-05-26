@@ -1,7 +1,7 @@
 ﻿#ifndef DUNGEON_H
 #define DUNGEON_H
 #include <QString>
-struct character
+struct character_deprecate
 {
     QString name;
     int level;
@@ -39,7 +39,7 @@ private:
     void initialrole();
     void initialenemy();
 public:
-    character role;
+    character_deprecate role;
     Monster enemy[10];
     QString DungeonStytle[41][4];
     QString MonsterPic[20];//怪物图片字符串

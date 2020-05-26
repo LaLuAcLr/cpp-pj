@@ -81,8 +81,6 @@ public:
     int*** map;//三维数组
     int x;//角色位置
     int y;
-    int direction;//角色方向
-    int calendar;
 private:
 };
 

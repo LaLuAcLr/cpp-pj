@@ -3,6 +3,7 @@
 #include "StartMenu.h"
 #include "Farm.h"
 #include "storewidget.h"
+#include "character.h"
 #include <QMainWindow>
 #include <QWidget>
 #include <QKeyEvent>
@@ -29,7 +30,7 @@ private:
     void init_window();
     void Charactermove();
     void PortalJump();
-    void Mapadd();
+    //void Mapadd();
 
 
 };

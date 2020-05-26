@@ -37,22 +37,31 @@ void Window::init_window()
 }
 void Window::keyPressEvent(QKeyEvent *ev)
 {
+    if (farm->Character->isWalking) return;
     switch(ev->key())
     {
     case Qt::Key_W:
     {
         qDebug()<<"W";
-        Direction = 1;
+        Direction = 0;
         Charactermove();
-        farm->regenarate_Character();
+        //farm->regenarate_Character();
         break;
     }
     case Qt::Key_S:
     {
         qDebug()<<"S";
+        Direction = 1;
+        Charactermove();
+        //farm->regenarate_Character();
+        break;
+    }
+    case Qt::Key_D:
+    {
+        qDebug()<<"D";
         Direction = 2;
         Charactermove();
-        farm->regenarate_Character();
+        //farm->regenarate_Character();
         break;
     }
     case Qt::Key_A:
@@ -60,15 +69,7 @@ void Window::keyPressEvent(QKeyEvent *ev)
         qDebug()<<"A";
         Direction = 3;
         Charactermove();
-        farm->regenarate_Character();
-        break;
-    }
-    case Qt::Key_D:
-    {
-        qDebug()<<"D";
-        Direction = 4;
-        Charactermove();
-        farm->regenarate_Character();
+        //farm->regenarate_Character();
         break;
     }
     case Qt::Key_E:
@@ -81,7 +82,7 @@ void Window::keyPressEvent(QKeyEvent *ev)
     case Qt::Key_F:
     {
         qDebug()<<"F";
-        Mapadd();
+        //Mapadd();
         farm->regenarate_Map();
         break;
     }
@@ -107,75 +108,87 @@ void Window::Charactermove()
 {
     switch(Direction)
     {
-    case 1:
+    case 0:
     {
-        if(farm->m.direction==1)
+        if(farm->Character->current_dir==0)
         {
+            if(farm->m.x == 0) {
+                farm->Character->total_move(0);
+                return;
+            }
             if(farm->m.map[farm->m.floor][(farm->m.x)-1][farm->m.y]<10
                     ||farm->m.map[farm->m.floor][(farm->m.x)-1][farm->m.y]>=50)
+            {
                 farm->m.x -= 1;
+                farm->Character->total_move(0);
+            }
         }
         else
         {
-            farm->m.direction=1;
+            farm->Character->turn_direction(0);
+        }
+        break;
+    }
+    case 1:
+    {
+        if(farm->Character->current_dir==1)
+        {
+            if(farm->m.x == 16) {
+                farm->Character->total_move(1);
+                return;
+            }
+            if(farm->m.map[farm->m.floor][(farm->m.x)+1][farm->m.y]<10
+                    ||farm->m.map[farm->m.floor][(farm->m.x)+1][farm->m.y]>=50)
+            {
+                farm->m.x += 1;
+                farm->Character->total_move(1);
+            }
+        }
+        else
+        {
+            farm->Character->turn_direction(1);
         }
         break;
     }
     case 2:
     {
-        if(farm->m.direction==2)
+        if(farm->Character->current_dir==2)
         {
-            if(farm->m.map[farm->m.floor][(farm->m.x)+1][farm->m.y]<10
-                    ||farm->m.map[farm->m.floor][(farm->m.x)+1][farm->m.y]>=50)
-                farm->m.x += 1;
+            if(farm->m.y == 16) {
+                farm->Character->total_move(2);
+                return;
+            }
+            if(farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]<10
+                    ||farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]>=50)
+            {
+                farm->m.y += 1;
+                farm->Character->total_move(2);
+            }
         }
         else
         {
-            farm->m.direction=2;
+            farm->Character->turn_direction(2);
         }
         break;
     }
     case 3:
     {
-        if(farm->m.direction==3)
+        if(farm->Character->current_dir==3)
         {
+            if(farm->m.y == 0) {
+                farm->Character->total_move(3);
+                return;
+            }
             if(farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)-1]<10
                     ||farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)-1]>=50)
+            {
                 farm->m.y -= 1;
-            farm->m.direction=4;
-        }
-        else if(farm->m.direction==4)
-        {
-            if(farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)-1]<10
-                    ||farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)-1]>=50)
-                farm->m.y -= 1;
-            farm->m.direction=3;
+                farm->Character->total_move(3);
+            }
         }
         else
         {
-            farm->m.direction=3;
-        }
-        break;
-    }
-    case 4:
-    {
-        if(farm->m.direction==5)
-        {
-            if(farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]<10
-                    ||farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]>=50)
-                farm->m.y += 1;
-            farm->m.direction=6;
-        }
-        else if(farm->m.direction==6)
-        {
-            if(farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]<10
-                    ||farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]>=50)
-                farm->m.y += 1;
-            farm->m.direction=5;
-        }
-        else
-        {
-            farm->m.direction=5;
+            farm->Character->turn_direction(3);
         }
         break;
     }
@@ -189,9 +202,9 @@ void Window::PortalJump()
     else
         qDebug()<<"no portal";
 }
-void Window::Mapadd()
+/*void Window::Mapadd()
 {
-    switch(farm->m.direction)
+    switch(farm->Character->current_dir)
     {
     case 1:farm->m.map[farm->m.floor][(farm->m.x)-1][farm->m.y]++;break;
     case 2:farm->m.map[farm->m.floor][(farm->m.x)+1][farm->m.y]++;break;
@@ -201,4 +214,4 @@ void Window::Mapadd()
     case 6:farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)+1]++;break;
     default:break;
     }
-}
+}*/

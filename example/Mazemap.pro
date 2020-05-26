@@ -16,6 +16,7 @@ SOURCES += main.cpp\
     Farm.cpp \
     StartMenu.cpp \
     Window.cpp \
+    character.cpp \
         mainwindow.cpp \
     map.cpp \
     maze.cpp \
@@ -27,6 +28,7 @@ HEADERS  += mainwindow.h \
     Farm.h \
     StartMenu.h \
     Window.h \
+    character.h \
     map.h \
     maze.h \
     interface.h \

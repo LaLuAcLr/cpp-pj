@@ -50,3 +50,11 @@ Put anything you think important in this
 做出人物移动动画
 
 --5.24
+
+整合前面的代码
+
+重设地图为17*15
+
+准备人地交互和人人交互
+
+--5.26

@@ -19,7 +19,7 @@ void Map::initialitem(struct Items& item)
 }
 void Map::initialrole()
 {
-    role.name = "experimenter no.1";
+    role.name = "LaLuAcLr";
     role.money = 2000;
     role.stamina = 100;
     initialtool(role.tool);
@@ -84,7 +84,7 @@ void Map::initialTerrainString()//动态贴图（地图物件）
 }
 void Map::initialCharacterString()
 {
-    CharacterString[0]="border-image:url(:/image/DungeonNew/Mario/up00.png);";
+    CharacterString[0]="border-image:url(:/man/front_1.png);";
     CharacterString[1]="border-image:url(:/image/DungeonNew/Mario/down00.png);";
     CharacterString[2]="border-image:url(:/image/DungeonNew/Mario/left00.png);";
     CharacterString[3]="border-image:url(:/image/DungeonNew/Mario/left01.png);";
@@ -116,8 +116,8 @@ Map::Map()
     map = new int** [Total_Floor];
     for (int i = 0; i < Total_Floor; i++)
     {
-        map[i] = new int* [13];
-        for (int j = 0; j < 13; j++)
+        map[i] = new int* [17];
+        for (int j = 0; j < 17; j++)
         {
             map[i][j] = new int[15];
             for (int k = 0; k < 15; k++)
@@ -131,22 +131,22 @@ Map::Map()
     initialTerrainString();
     initialCharacterString();
     //initialMapString();
+    initialrole();
     initialnpc();
     initialregion();
 }
 void Map::initialMap()
 {
     floor = 0;
-    x = 6;
-    y = 8;
-    direction = 1;
+    x = 2;
+    y = 0;
     int num = 0;
     while (1)
     {
 
         if (num == 1)
         {
-            int tempmap[13][15] = {
+            int tempmap[17][15] = {
                 14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,
                 14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -159,10 +159,14 @@ void Map::initialMap()
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,40,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,51,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,51,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,51,1,1,1,1,1,1,1,1,1,1,1
 
             };
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 17; i++)
             {
                 for (int j = 0; j < 15; j++)
                 {
@@ -172,7 +176,7 @@ void Map::initialMap()
         }
         if (num == 2)
         {
-            int tempmap[13][15] = {
+            int tempmap[17][15] = {
                 1,1,1,1,11,11,11,11,11,11,11,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -185,17 +189,21 @@ void Map::initialMap()
                 1,1,1,1,1,1,1,1,1,12,12,12,12,12,12,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+                1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
             };
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < 15; j++)
+                for (int j = 0; j < 17; j++)
                 {
                     map[num - 1][i][j] = tempmap[i][j];
                 }
             }
         }
-        if (num == 3)
+        /*if (num == 3)
         {
             int tempmap[13][15] = {
                 1,1,1,1,50,1,1,1,1,1,1,1,1,1,1,
@@ -320,7 +328,7 @@ void Map::initialMap()
                     map[num - 1][i][j] = tempmap[i][j];
                 }
             }
-        }
+        }*/
         num++;
         if (num > Total_Floor)
         {

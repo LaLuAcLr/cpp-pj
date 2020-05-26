@@ -1,6 +1,6 @@
 ﻿#include "Farm.h"
 #include <QStringList>
-#include <QKeyEvent>
+#include <QDebug>
 
 Farm::Farm(QWidget *parent) :
     QWidget(parent)
@@ -49,12 +49,12 @@ void Farm::init_store()
 void Farm::init_map()
 {
     int i, j;
-    for (i=0;i<13;++i)
+    for (i=0;i<17;++i)
     {
         for (j=0;j<15;++j)
         {
             map[i][j] = new QWidget();
-            map[i][j]->setMinimumSize(64, 45);
+            map[i][j]->setFixedSize(56, 40);
 
             if(m.map[m.floor][i][j]>=10&&m.map[m.floor][i][j]<20)
                 map[i][j]->setStyleSheet(m.TerrainString[m.map[m.floor][i][j]-10]);
@@ -62,7 +62,6 @@ void Farm::init_map()
                 map[i][j]->setStyleSheet("border-image:url(:/now/box.png);");
             else if(m.map[m.floor][i][j]>=40&&m.map[m.floor][i][j]<50){
                 map[i][j]->setStyleSheet("border-image:url(:/now/man.png);");
-                //map[i][j]->setMinimumSize(100,100);
             }
             else
                 map[i][j]->setStyleSheet("border-image:url();");
@@ -72,35 +71,33 @@ void Farm::init_map()
 }
 void Farm::init_Character()
 {
-    Character = new QWidget();
-    Character->setMinimumSize(64, 45);
-    Character->setStyleSheet(m.CharacterString[m.direction-1]);
-    MapLayout->addWidget(Character,m.x,m.y);
+    Character = new character(mapWidget);
+    Character->setStyleSheet("border-image:url();");
+    Character->move(0, 80);
 }
-void Farm::regenarate_Character()
+/*void Farm::regenarate_Character()
 {
     Character->hide();
-    Character = new QWidget();
     Character->setMinimumSize(64, 45);
     Character->setStyleSheet(m.CharacterString[m.direction-1]);
     MapLayout->addWidget(Character,m.x,m.y);
-}
+}*/
 void Farm::regenarate_Map()
 {
     int i, j;
-    for (i=0;i<13;++i)
+    for (i=0;i<17;++i)
     {
         for (j=0;j<15;++j)
         {
             map[i][j]->hide();
         }
     }
-    for (i=0;i<13;++i)
+    for (i=0;i<17;++i)
     {
         for (j=0;j<15;++j)
         {
             map[i][j] = new QWidget();
-            map[i][j]->setMinimumSize(64, 45);
+            map[i][j]->setFixedSize(56, 40);
 
             if(m.map[m.floor][i][j]>=10&&m.map[m.floor][i][j]<20)
                 map[i][j]->setStyleSheet(m.TerrainString[m.map[m.floor][i][j]-10]);
@@ -108,12 +105,12 @@ void Farm::regenarate_Map()
                 map[i][j]->setStyleSheet("border-image:url(:/now/box.png);");
             else if(m.map[m.floor][i][j]>=40&&m.map[m.floor][i][j]<50)
                 map[i][j]->setStyleSheet("border-image:url(:/now/man.png);");
-            else
-                map[i][j]->setStyleSheet("border-image:url();");
+            //else
+                //map[i][j]->setStyleSheet("border-image:url();");
             MapLayout->addWidget(map[i][j],i,j);
         }
     }
-    regenarate_Character();
+    //regenarate_Character();
 }
 void Farm::add_day_func()
 {
@@ -138,9 +135,9 @@ void Farm::init_infowidget()
 
     name = new QLabel(infoWidget);
     name->setFont(fontName);
-    name->setText("LaLuAcLr");
+    name->setText(m.role.name);
     name->setStyleSheet("border-image: url(:/now/labelbg.png);");
-    name->setGeometry(150, 20, 100, 40);
+    name->setGeometry(150, 30, 100, 40);
 
     label_stamina = new QLabel(infoWidget);
     label_stamina->setFont(fontLabel);

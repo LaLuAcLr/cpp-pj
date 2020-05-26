@@ -12,6 +12,7 @@
 #include "map.h"
 #include "StartMenu.h"
 #include "storewidget.h"
+#include "character.h"
 class Farm : public QWidget
 {
     Q_OBJECT
@@ -28,13 +29,13 @@ private:
     QGridLayout *MapLayout;
     QHBoxLayout *MainLayout;
 public:
-    void regenarate_Character();
+    //void regenarate_Character();
     void regenarate_Map();
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
-    QWidget *map[13][15];
-    QWidget *Character;
+    QWidget *map[17][15];
+
 
     int     Day;
 public slots:
@@ -58,6 +59,7 @@ private:
     QPushButton *load;
 public:
     Map m;
+    character *Character;
     StoreWidget *Store;
     QPushButton *mainmenu;
 };
