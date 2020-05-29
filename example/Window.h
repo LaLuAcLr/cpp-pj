@@ -26,12 +26,15 @@ public slots:
     void show_mainmenu();
     void keyPressEvent(QKeyEvent *ev);
     void OpenStore();
+    void Opendialogue(int n);
+    void BuyinStore();
 private:
     void init_window();
     void Charactermove();
     void PortalJump();
-    //void Mapadd();
-
+    void direction_field();
+    bool check_outbound();
+    bool judge_interaction(bool op(int));
 
 };
 

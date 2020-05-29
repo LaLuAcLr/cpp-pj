@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     Farm.cpp \
+    Field.cpp \
     StartMenu.cpp \
     Window.cpp \
     character.cpp \
+    dialogue.cpp \
         mainwindow.cpp \
     map.cpp \
     maze.cpp \
@@ -26,9 +28,11 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     Farm.h \
+    Field.h \
     StartMenu.h \
     Window.h \
     character.h \
+    dialogue.h \
     map.h \
     maze.h \
     interface.h \

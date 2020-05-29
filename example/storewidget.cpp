@@ -42,10 +42,10 @@ void StoreWidget::initialStoreWin()
 
     text1->setText("store");
     text2->setText("I can help you");
-    op1->setText("buy apple seed");
-    op2->setText("buy pear seed");
-    op3->setText("buy banana seed");
-    op4->setText("buy knife");
+    op1->setText("buy apple seed $10");
+    op2->setText("buy pear seed $10");
+    op3->setText("buy banana seed $10");
+    op4->setText("buy knife $10");
     exitOption->setText("Leave");
 
 

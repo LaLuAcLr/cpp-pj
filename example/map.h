@@ -9,24 +9,13 @@ struct Tools
     int function;
     int level;
 };
-struct Items
-{
-    int money;
-    int gold;
-    int sliver;
-    int iron;
-    int stone;
-    int manure;
-    int seed;
-    int fruit;
-};
 struct charactor
 {
     QString name;
     int money;
     int stamina;//疲劳度
     Tools tool;//手持工具
-    Items item;//物品
+    QString seed;//种子
 };
 struct Terrain  //可交互地形
 {
@@ -61,11 +50,10 @@ public:
 private:
     void initialrole();
     void initialtool(struct Tools& tool);
-    void initialitem(struct Items& item);
     void initialportal();
     void initialTerrainString();
-    void initialCharacterString();
-    //void initialNPCpic();//初始化npc图片
+    void initialMapFloor();
+    void initialNPCpic();//初始化npc图片
     void initialregion();
     void initialnpc();
 public:
@@ -74,8 +62,9 @@ public:
     NPC npc[10];
     portal p[10];
     QString TerrainString[20];
+    QString MapFloor[10];
     QString CharacterString[10];
-    //string NPC_pic[20];//npc贴图字符串
+    QString NPC_pic[10][4];//npc贴图字符串
     int floor;
     int Total_Floor;
     int*** map;//三维数组
