@@ -1,4 +1,4 @@
-#ifndef DIALOGUE_H
+﻿#ifndef DIALOGUE_H
 #define DIALOGUE_H
 
 #include <QWidget>
@@ -36,7 +36,8 @@ private:
     void showEvent(QShowEvent *);//重写窗口显示事件,为了使当前窗口获得焦点
     void initialwords();
 public slots:
-    void initialStoreWin(int n);//初始化对话界面
+    void initialStoreWin(int);//初始化对话界面
     void OptionBoxborderChanged();
+
 };
 #endif // DIALOGUE_H

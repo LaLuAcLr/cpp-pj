@@ -22,9 +22,9 @@ public slots:
 public:
     void total_move (int);//整个四帧的移动函数
     void turn_direction(int);
-public:
-    bool isWalking;
-    int current_dir;
+    bool get_isWalking() const { return isWalking; }
+    int get_curr_dir() const { return current_dir; }
+
 private:
     QHash <int, QImage> pic_hash;//图片对应hash
     QVector <int> walk_pos;//人物姿态对应vector
@@ -32,7 +32,7 @@ private:
     void init_vec ();//vec 初始化
     QString num2pic (int,int);//将数据转化为对应内容的string
     QTimer *move_timer;//定时器
-
-
+    bool isWalking;
+    int current_dir;
 };
 #endif // CHARACTER_H

@@ -86,3 +86,13 @@ Put anything you think important in this
 50-60传送门
 
 --5.29
+
+1. 钓鱼、挖矿 ysr szj
+
+2. SL wm
+
+3. newgame画面
+
+4. 商店、宝玉 thd
+
+--6.1

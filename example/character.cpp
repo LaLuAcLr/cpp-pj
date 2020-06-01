@@ -17,7 +17,7 @@ void character::init_hash() {
     for (int k = 0; k < 16; ++k) {
         int i = k/4,j = k%4;
         QImage image(num2pic(i,j));
-        image = image.scaled(28, 40, Qt::KeepAspectRatio);
+        image = image.scaled(56, 40, Qt::KeepAspectRatio);
         pic_hash.insert(k,image);
     }
 }

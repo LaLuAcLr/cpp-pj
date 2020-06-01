@@ -30,6 +30,12 @@ public:
     bool update_pic(int Day); // 当前天数
     void refresh(QString, int, int, int, int);
     void restart();
+    bool get_isRipe() const { return isRipe; }
+    const QString& get_name() const { return name; }
+    int get_ripe_day() const { return ripe_day; }
+    int get_big_grass_day() const { return big_grass_day; }
+    int get_small_grass_day() const { return small_grass_day; }
+    int get_plant_day() const { return plant_day; }
 private:
     void show_big_grass() { setPixmap(big_grass); }
     void show_small_grass() { setPixmap(small_grass); }
@@ -38,7 +44,7 @@ private:
     QPixmap veg_pic;
     QPixmap big_grass;
     QPixmap small_grass;
-public:
+
     bool isRipe;
     QString name;
     int ripe_day;

@@ -20,7 +20,6 @@ private:
     StartMenu *startmenu;
     Farm *farm;
     QWidget *MainWidget;
-    int Direction;
 public slots:
     void show_farm();
     void show_mainmenu();
@@ -28,13 +27,15 @@ public slots:
     void OpenStore();
     void Opendialogue(int n);
     void BuyinStore();
+
 private:
     void init_window();
-    void Charactermove();
+    void Charactermove(int);
     void PortalJump();
     void direction_field();
     bool check_outbound();
     bool judge_interaction(bool op(int));
+
 
 };
 

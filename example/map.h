@@ -1,6 +1,8 @@
 ﻿#ifndef MAP_H
 #define MAP_H
 #include <QString>
+#include <QStringList>
+#include <QMap>
 using namespace std;
 
 struct Tools
@@ -9,19 +11,19 @@ struct Tools
     int function;
     int level;
 };
+struct Items
+{
+    QMap<QString, int> seed;
+
+};
 struct charactor
 {
     QString name;
     int money;
     int stamina;//疲劳度
     Tools tool;//手持工具
-    QString seed;//种子
-};
-struct Terrain  //可交互地形
-{
-    int num;//编号
-    QString name;
-    int status;
+    QString seed;
+    Items item;
 };
 struct NPC  //可交互角色
 {
@@ -46,6 +48,7 @@ public:
     Map();
     void initialMap();
     void initialCharacterPos(struct portal& p);//经过传送门后位置跳转
+    void initialseed(const QStringList&);
     string dialogue(struct NPC& c);
 private:
     void initialrole();
@@ -54,11 +57,9 @@ private:
     void initialTerrainString();
     void initialMapFloor();
     void initialNPCpic();//初始化npc图片
-    void initialregion();
     void initialnpc();
 public:
     charactor role;
-    Terrain region[10];
     NPC npc[10];
     portal p[10];
     QString TerrainString[20];
@@ -70,7 +71,7 @@ public:
     int*** map;//三维数组
     int x;//角色位置
     int y;
-private:
+
 };
 
 #endif // MAP_H

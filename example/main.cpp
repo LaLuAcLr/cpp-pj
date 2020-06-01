@@ -1,5 +1,4 @@
-﻿#include "mainwindow.h"
-#include "StartMenu.h"
+﻿#include "StartMenu.h"
 #include "Farm.h"
 #include "Window.h"
 #include <QDesktopWidget>

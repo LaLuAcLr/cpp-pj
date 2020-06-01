@@ -1,4 +1,4 @@
-﻿#ifndef MAINWINDOW_H
+﻿/*#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -30,7 +30,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-/**********************   主界面     ***********************/
+  主界面
 private:
     int BASIC_WIDTH;//地图窗口宽度
     int BASIC_HEIGHT;//地图窗口高度
@@ -52,7 +52,7 @@ private:
     void mouseMoveEvent(QMouseEvent *event);//鼠标移动事件
 private slots:
     void ShowWidget();//显示界面
-/**********************   迷宫模式     ***********************/
+ 迷宫模式
 private:
     int iNum;//自动寻路显示路径辅助变量
     int lastheight;//上一次设置的迷宫高度
@@ -89,7 +89,7 @@ private slots:
     void timeStart();//定时器开启
     void MapStytleSet();//设置地图风格
     void quit();//返回主菜单
-/**********************   地牢模式     ***********************/
+   地牢模式
 private:
     Dungeon d;//地牢类
     QWidget *infoWidget;//状态显示界面
@@ -184,4 +184,4 @@ private://音效
     QTimer *soundTimer;
 };
 
-#endif // MAINWINDOW_H
+#endif*/ // MAINWINDOW_H

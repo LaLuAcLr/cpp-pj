@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+﻿/*#include "mainwindow.h"
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QPalette>
@@ -1071,26 +1071,26 @@ void MainWindow::OpenStore()
         d.role.scoreNum-=Store->Currstore_price;
         if(Store->chooseOption==0)
         {
-            d.MAX_HP+=100 * (Store->BuyTimes-1);
-            d.role.hp+=100 * (Store->BuyTimes-1);
+            //d.MAX_HP+=100 * (Store->BuyTimes-1);
+            //d.role.hp+=100 * (Store->BuyTimes-1);
             hp->setText(QString::number(d.role.hp));
             score->setText(QString::number(d.role.scoreNum));
-            if(d.role.scoreNum-Store->Nextstore_price<0)//判断下一次是否可以购买
-            {
-                Store->setChooseEnable=false;
-            }
+//            if(d.role.scoreNum-Store->Nextstore_price<0)//判断下一次是否可以购买
+//            {
+//                Store->setChooseEnable=false;
+//            }
             Store->haveBuyTimer->stop();//购买完成
         }
         else if(Store->chooseOption==1)
         {
-            d.role.mp+=20 * (Store->BuyTimes-1);
+            //d.role.mp+=20 * (Store->BuyTimes-1);
             mp->setText(QString::number(d.role.mp));
             score->setText(QString::number(d.role.scoreNum));
 
-            if(d.role.scoreNum-Store->Nextstore_price<0)
-            {
-                Store->setChooseEnable=false;
-            }
+//            if(d.role.scoreNum-Store->Nextstore_price<0)
+//            {
+//                Store->setChooseEnable=false;
+//            }
             Store->haveBuyTimer->stop();
         }
         else if(Store->chooseOption==2)
@@ -1099,10 +1099,10 @@ void MainWindow::OpenStore()
             atk->setText(QString::number(d.role.atk));
             score->setText(QString::number(d.role.scoreNum));
 
-            if(d.role.scoreNum-Store->Nextstore_price<0)
-            {
-                Store->setChooseEnable=false;
-            }
+//            if(d.role.scoreNum-Store->Nextstore_price<0)
+//            {
+//                Store->setChooseEnable=false;
+//            }
             Store->haveBuyTimer->stop();
         }
         else if(Store->chooseOption==3)
@@ -1111,10 +1111,10 @@ void MainWindow::OpenStore()
             def->setText(QString::number(d.role.def));
             score->setText(QString::number(d.role.scoreNum));
 
-            if(d.role.scoreNum-Store->Nextstore_price<0)
-            {
-                Store->setChooseEnable=false;
-            }
+//            if(d.role.scoreNum-Store->Nextstore_price<0)
+//            {
+//                Store->setChooseEnable=false;
+//            }
             Store->haveBuyTimer->stop();
         }
         else
@@ -1236,504 +1236,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
         switch(event->key())
         {
-/********************************************************************************************************/
-/***************************************    上     ******************************************************/
-/********************************************************************************************************/
-          case Qt::Key_W://上
-            if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==0)
-            {
-                return;
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==1)
-            {
-                moveDirection=0;
-                Move();
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==2)
-            {
-                moveDirection=0;
-                Move();
-                d.role.scoreNum+=10;
-                score->setText(intToQString(d.role.scoreNum));
-                soundPlay(0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==3)
-            {
-                Monsters(0,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==4)
-            {
-                Monsters(1,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==5)
-            {
-               QuestionBox(0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==8)
-            {
-                items(8,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==9)
-            {
-                items(9,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==10)
-            {
-                items(10,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==11)
-            {
-                Monsters(2,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==12)
-            {
-                Monsters(3,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==14)
-            {
-                checkPrefloor();
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==15)
-            {
-                checkNextfloor();
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==16)
-            {
-                doors(16,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==17)
-            {
-                doors(17,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==18)
-            {
-                doors(18,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==19)
-            {
-                items(19,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==20)
-            {
-                items(20,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==21)
-            {
-                items(21,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==22)
-            {
-                items(22,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==23)
-            {
-                items(23,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==25)
-            {
-                Monsters(4,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==26)
-            {
-                Monsters(5,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==27)
-            {
-                Monsters(6,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==28)
-            {
-                items(28,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==29)
-            {
-                items(29,0);
-            }
-            else if(d.x>0&&d.map[d.floor-1][d.x-1][d.y]==35)
-            {
-                Store->show();
-                if(d.role.scoreNum-Store->Currstore_price>=0)
-                {
-                    Store->setChooseEnable=true;
-                }
-                Store->StoreWinisShow=true;
-            }
-            else
-            {
-                return;
-            }
-            break;
-/********************************************************************************************************/
-/***************************************    下     ******************************************************/
-/********************************************************************************************************/
-        case Qt::Key_S://下
-            if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==0)
-            {
-                return;
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==1)
-            {
-                moveDirection=1;
-                Move();
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==2)
-            {
-                moveDirection=1;
-                Move();
-                d.role.scoreNum+=10;
-                score->setText(intToQString(d.role.scoreNum));
-                soundPlay(0);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==3)
-            {
-                Monsters(0,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==4)
-            {
-                Monsters(1,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==5)
-            {
-               QuestionBox(1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==8)
-            {
-                items(8,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==9)
-            {
-                items(9,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==10)
-            {
-                items(10,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==11)
-            {
-                Monsters(2,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==12)
-            {
-                Monsters(3,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==14)
-            {
-
-                checkPrefloor();
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==15)
-            {
-                checkNextfloor();
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==16)
-            {
-                doors(16,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==17)
-            {
-               doors(17,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==18)
-            {
-                doors(18,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==19)
-            {
-                items(19,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==20)
-            {
-                items(20,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==21)
-            {
-                items(21,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==22)
-            {
-                items(22,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==23)
-            {
-                items(23,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==24)
-            {
-                items(24,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==25)
-            {
-                Monsters(4,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==26)
-            {
-                Monsters(5,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==27)
-            {
-                Monsters(6,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==28)
-            {
-                items(28,1);
-            }
-            else if(d.x<11&&d.map[d.floor-1][d.x+1][d.y]==29)
-            {
-                items(29,1);
-            }
-            else
-            {
-                return;
-            }
-            break;
-/********************************************************************************************************/
-/***************************************    左     ******************************************************/
-/********************************************************************************************************/
-        case Qt::Key_A://左
-            if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==0)
-            {
-                return;
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==1)
-            {
-                moveDirection=2;
-                Move();
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==2)
-            {
-                moveDirection=2;
-                Move();
-                d.role.scoreNum+=10;
-                score->setText(intToQString(d.role.scoreNum));
-                soundPlay(0);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==3)
-            {
-                Monsters(0,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==4)
-            {
-                Monsters(1,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==5)
-            {
-               QuestionBox(2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==8)
-            {
-                items(8,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==9)
-            {
-                items(9,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==10)
-            {
-                items(10,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==11)
-            {
-                Monsters(2,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==12)
-            {
-                Monsters(3,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==14)
-            {
-               checkPrefloor();
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==15)
-            {
-               checkNextfloor();
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==16)
-            {
-                doors(16,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==17)
-            {
-                doors(17,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==18)
-            {
-                doors(18,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==19)
-            {
-                items(19,2);
-
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==20)
-            {
-                items(20,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==21)
-            {
-                items(20,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==22)
-            {
-                items(22,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==23)
-            {
-                items(23,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==25)
-            {
-                Monsters(4,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==26)
-            {
-                Monsters(5,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==27)
-            {
-                Monsters(6,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==28)
-            {
-                items(28,2);
-            }
-            else if(d.y>0&&d.map[d.floor-1][d.x][d.y-1]==29)
-            {
-                items(29,2);
-            }
-            else
-            {
-                return;
-            }
-            break;
-/********************************************************************************************************/
-/***************************************    右     ******************************************************/
-/********************************************************************************************************/
-        case Qt::Key_D:
-            if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==0)
-            {
-                return;
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==1)
-            {
-                moveDirection=3;
-                Move();
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==2)
-            {
-                moveDirection=3;
-                Move();
-                d.role.scoreNum+=10;
-                score->setText(intToQString(d.role.scoreNum));
-                soundPlay(0);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==3)
-            {
-                Monsters(0,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==4)
-            {
-                Monsters(1,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==5)
-            {
-               QuestionBox(3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==8)
-            {
-                items(8,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==9)
-            {
-                items(9,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==10)
-            {
-                items(10,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==11)
-            {
-                Monsters(2,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==12)
-            {
-                Monsters(3,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==14)
-            {
-               checkPrefloor();
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==15)
-            {
-                checkNextfloor();
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==16)
-            {
-                doors(16,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==17)
-            {
-                doors(17,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==18)
-            {
-                doors(18,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==19)
-            {
-                items(19,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==20)
-            {
-                items(20,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==21)
-            {
-                items(21,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==22)
-            {
-                items(22,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==23)
-            {
-                items(23,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==24)
-            {
-                items(24,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==25)
-            {
-                Monsters(4,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==26)
-            {
-                Monsters(5,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==27)
-            {
-                Monsters(6,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==28)
-            {
-                items(28,3);
-            }
-            else if(d.y<15&&d.map[d.floor-1][d.x][d.y+1]==29)
-            {
-                items(29,3);
-            }
-            else
-            {
-                return;
-            }
-            break;
-        }
-    }
-    else
-    {
-        return;
-    }
-}
 
 //重写鼠标点击和移动事件，使没有边框的窗口可以通过鼠标移动
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -2188,3 +1690,4 @@ void MainWindow::moveCharacter()//设置移动时的图片
     }
 
 }
+*/

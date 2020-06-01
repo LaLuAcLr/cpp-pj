@@ -1,9 +1,9 @@
-#include "dialogue.h"
+﻿#include "dialogue.h"
+#pragma execution_character_set("utf-8")
 
 Dialogue::Dialogue(QWidget *parent) : QWidget(parent)
 {
     initialStoreWin(0);
-
 }
 void Dialogue::initialwords()
 {
@@ -31,29 +31,40 @@ void Dialogue::initialwords()
     NPC_words[3][3]="更好的装备可以让你钓鱼的成功率增加";
     NPC_words[3][4]="祝你好运";
 
-    NPC_words[4][0]="ass we can";
-    NPC_words[4][1]="guaiguai zhanhao";
-    NPC_words[4][2]="deep dark fantasy";
-    NPC_words[4][3]="boy next door";
-    NPC_words[4][4]="take it boy";
+    NPC_words[4][0]="你又来找我了吗？";
+    NPC_words[4][1]="父亲说，你太穷了";
+    NPC_words[4][2]="我们不适合在一起";
+    NPC_words[4][3]="。。。。。。";
+    NPC_words[4][4]="如果能用宝石向我的家人证明，也许会有转机吧";
 
-    NPC_words[5][0]="";
-    NPC_words[5][1]="";
-    NPC_words[5][2]="";
-    NPC_words[5][3]="";
-    NPC_words[5][4]="";
+    NPC_words[5][0]="你还没有放弃吗？";
+    NPC_words[5][1]="这点礼物改变不了我父亲的固执";
+    NPC_words[5][2]="父亲说，能娶我的人至少要有金色的汤匙";
+    NPC_words[5][3]="可是就凭一个种地的穷小子怎么可能呢。。";
+    NPC_words[5][4]="我好苦恼。。";
+
+    NPC_words[6][0]="我很高兴你能为我这么努力";
+    NPC_words[6][1]="但是有些东西也许是天生就注定的";
+    NPC_words[6][2]="我就要和远东之国的皇子联姻了";
+    NPC_words[6][3]="除非能用宝玉收买远东之国的使者";
+    NPC_words[6][4]="但是我一个闺中女子怎么才能买到宝玉呢";
+
+    NPC_words[7][0]="谢谢你又来看我";
+    NPC_words[7][1]="我已经告诉父亲我真正喜欢的人是你了";
+    NPC_words[7][2]="但父亲的要求是你要有精灵宝珠的戒指";
+    NPC_words[7][3]="相信如果是你的话，一定可以做到吧";
+    NPC_words[7][4]="我在这里等你来接我";
 }
 void Dialogue::initialStoreWin(int n)
 {
 
     Times=0;//次数
     initialwords();
-    npcchoose=n;
+    npcchoose = n;
     StoreWin=new QWidget(this);
     QFont font("Consolas" ,12, 30);
     this->setFont(font);
     StoreWin->setStyleSheet("color:white;background-color:black");
-    QLabel *Store_pic=new QLabel(StoreWin);
     text1=new QLabel(StoreWin);
     text2=new QLabel(StoreWin);
     op1=new QLabel(StoreWin);
@@ -61,8 +72,6 @@ void Dialogue::initialStoreWin(int n)
     OptionBox=new QGraphicsView(StoreWin);//最后构造的控件会在最上面
     OptionBox->setStyleSheet("border:3px solid #FFFFFF;");
 
-    Store_pic->setStyleSheet("border-image: url(:/info/image/information/Store.png);");
-    Store_pic->setGeometry(10,10,30,30);
     text1->setGeometry(32,10,150,32);
     text2->setGeometry(32,50,780,32);
     op1->setGeometry(32,112,192,32);
@@ -84,7 +93,6 @@ void Dialogue::initialStoreWin(int n)
     border_color_it=0;
     OptionNum = 2;//选项数
     chooseOption = 0;//选择的选项
-    Times=0;//购买次数
     haveBuyTimer=new QTimer(this);
     StoreWinisShow=false;
     setChooseEnable=true;

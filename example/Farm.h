@@ -14,6 +14,10 @@
 #include <QJsonArray>
 #include <QFile>
 #include <QJsonDocument>
+#include <QMessageBox>
+#include <QStringList>
+#include <QDebug>
+
 #include "map.h"
 #include "StartMenu.h"
 #include "storewidget.h"
@@ -35,6 +39,8 @@ private:
     void init_dialogue();
     void init_infowidget(); // info column
     void init_fruit();
+    void init_GetitemWin();
+
 private:
     QGridLayout *MapLayout;
     QHBoxLayout *MainLayout;
@@ -44,13 +50,28 @@ public:
     void regenarate_Map();
     void regenerate_Info();
     void interact_field(int i, int j);
+    void show_field();
+    void hide_field();
+    void set_message(QString m) { msg = m; }
+    QString get_message() const { return msg; }
+    void start_msgtimer() { GetitemTimer->start(100); }
+    void set_store_veg();
+    const QMap<QString, QHash<QString, int>>& get_fruit_list() const { return fruit_list; }
+    void check_stamina();
+    void check_money();
+    void add_seed();
+    void remove_seed();
 private:
     QWidget *mainWidget;
     QWidget *mapWidget;
-    QWidget *map[17][15];
+    QLabel *map[17][15];
     Field   *field[10][10];
     Veg     *veg[10][10];
-    QHash<QString, QHash<QString, int>> fruit_list;
+    QString msg;
+    QTimer *GetitemTimer;
+    QLabel *GetitemsShow;
+    QMap<QString, QHash<QString, int>> fruit_list;
+    int GetitemNum;
     int Day;
 public slots:
     void add_day_func();
@@ -58,6 +79,7 @@ public slots:
     void change_seed(QString);
     void change_tool(QString);
     void change_dic(int n, int x, int y);
+    void GetitemWinshow();
 
 private:
     QWidget *infoWidget;    // info column
@@ -81,6 +103,8 @@ public:
     Dialogue *dialogue;
     StoreWidget *Store;
     QPushButton *mainmenu;
+
+
 };
 
 #endif // FARM_H

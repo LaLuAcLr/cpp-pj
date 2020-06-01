@@ -1,4 +1,5 @@
 ﻿#include "map.h"
+#include <QDebug>
 
 void Map::initialtool(struct Tools& tool)
 {
@@ -11,14 +12,13 @@ void Map::initialrole()
     role.name = "LaLuAcLr";
     role.money = 2000;
     role.stamina = 100;
-    role.seed = "None";
     initialtool(role.tool);
 }
-void Map::initialregion()
+void Map::initialseed(const QStringList& seed)
 {
-    region[0].name = "undetermined";
-    region[0].num = 0;
-    region[0].status = 0;
+    int n = seed.size();
+    for (int i=0; i<n; ++i)
+        role.item.seed.insert(seed[i], 0);
 }
 void Map::initialnpc()
 {
@@ -130,30 +130,30 @@ void Map::initialMapFloor()
 
 void Map::initialNPCpic()//动态贴图（npc）
 {
-    NPC_pic[0][0]="border-image:url(:/npc/npc0.0.png);";
-    NPC_pic[0][1]="border-image:url(:/npc/npc0.1.png);";
-    NPC_pic[0][2]="border-image:url(:/npc/npc0.2.png);";
-    NPC_pic[0][3]="border-image:url(:/npc/npc0.3.png);";
+    NPC_pic[0][0]=":/npc/npc0.0.png";
+    NPC_pic[0][1]=":/npc/npc0.1.png";
+    NPC_pic[0][2]=":/npc/npc0.2.png";
+    NPC_pic[0][3]=":/npc/npc0.3.png";
 
-    NPC_pic[1][0]="border-image:url(:/npc/npc1.0.png);";
-    NPC_pic[1][1]="border-image:url(:/npc/npc1.1.png);";
-    NPC_pic[1][2]="border-image:url(:/npc/npc1.2.png);";
-    NPC_pic[1][3]="border-image:url(:/npc/npc1.3.png);";
+    NPC_pic[1][0]=":/npc/npc1.0.png";
+    NPC_pic[1][1]=":/npc/npc1.1.png";
+    NPC_pic[1][2]=":/npc/npc1.2.png";
+    NPC_pic[1][3]=":/npc/npc1.3.png";
 
-    NPC_pic[2][0]="border-image:url(:/npc/npc2.0.png);";
-    NPC_pic[2][1]="border-image:url(:/npc/npc2.1.png);";
-    NPC_pic[2][2]="border-image:url(:/npc/npc2.2.png);";
-    NPC_pic[2][3]="border-image:url(:/npc/npc2.3.png);";
+    NPC_pic[2][0]=":/npc/npc2.0.png";
+    NPC_pic[2][1]=":/npc/npc2.1.png";
+    NPC_pic[2][2]=":/npc/npc2.2.png";
+    NPC_pic[2][3]=":/npc/npc2.3.png";
 
-    NPC_pic[3][0]="border-image:url(:/npc/npc3.0.png);";
-    NPC_pic[3][1]="border-image:url(:/npc/npc3.1.png);";
-    NPC_pic[3][2]="border-image:url(:/npc/npc3.2png);";
-    NPC_pic[3][3]="border-image:url(:/npc/npc3.3.png);";
+    NPC_pic[3][0]=":/npc/npc3.0.png";
+    NPC_pic[3][1]=":/npc/npc3.1.png";
+    NPC_pic[3][2]=":/npc/npc3.2png";
+    NPC_pic[3][3]=":/npc/npc3.3.png";
 
-    NPC_pic[4][0]="border-image:url(:/npc/npc4.0.png);";
-    NPC_pic[4][1]="border-image:url(:/npc/npc4.1.png);";
-    NPC_pic[4][2]="border-image:url(:/npc/npc4.2.png);";
-    NPC_pic[4][3]="border-image:url(:/npc/npc4.3.png);";
+    NPC_pic[4][0]=":/npc/npc4.0.png";
+    NPC_pic[4][1]=":/npc/npc4.1.png";
+    NPC_pic[4][2]=":/npc/npc4.2.png";
+    NPC_pic[4][3]=":/npc/npc4.3.png";
 }
 
 string Map::dialogue(struct NPC& c)
@@ -193,7 +193,6 @@ Map::Map()
     //initialMapString();
     initialrole();
     initialnpc();
-    initialregion();
 }
 void Map::initialMap()
 {
@@ -207,23 +206,23 @@ void Map::initialMap()
         if (num == 1)
         {
             int tempmap[17][15] = {
-                14,14,14,14,50,1,14,14,14,14,14,14,14,14,14,
-                14,14,14,14,1,1,14,14,14,14,14,14,40,1,14,
-                14,14,14,14,1,1,14,14,14,14,14,14,1,1,14,
-                14,1,1,1,1,1,1,1,1,1,1,1,1,1,14,
-                14,1,1,1,2,2,2,2,2,2,2,2,2,2,14,
-                14,1,20,1,2,2,2,2,2,2,2,2,2,2,14,
-                14,1,1,1,2,2,2,2,2,2,2,2,2,2,14,
-                14,14,1,14,2,2,2,2,2,2,2,2,2,2,14,
-                14,14,1,14,2,2,2,2,2,2,2,2,2,2,14,
-                14,1,1,1,2,2,2,2,2,2,2,2,2,2,14,
-                14,14,14,14,2,2,2,2,2,2,2,2,2,2,14,
-                14,14,14,14,2,2,2,2,2,2,2,2,2,2,14,
-                14,14,14,14,2,2,2,2,2,2,2,2,2,2,14,
-                14,1,1,1,2,2,2,2,2,2,2,2,2,2,14,
-                14,1,1,1,1,1,1,1,1,1,1,1,1,1,14,
-                14,14,14,1,14,14,14,14,14,14,14,14,14,14,14,
-                14,14,14,51,14,14,14,14,14,14,14,14,14,14,14
+                10,10,10,10,50,1,10,10,10,10,10,10,10,10,10,
+                10,10,10,10,1,1,10,10,10,10,10,10,1,1,10,
+                10,10,10,10,1,1,10,10,10,10,10,10,1,1,10,
+                10,1,1,1,1,1,1,1,1,1,1,1,1,1,10,
+                10,1,1,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,20,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,1,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,10,1,10,2,2,2,2,2,2,2,2,2,2,10,
+                10,10,1,10,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,1,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,10,10,10,2,2,2,2,2,2,2,2,2,2,10,
+                10,40,40,40,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,1,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,1,1,2,2,2,2,2,2,2,2,2,2,10,
+                10,1,1,1,1,1,1,1,1,1,1,1,1,1,10,
+                10,10,10,1,10,10,10,10,10,10,10,10,10,10,10,
+                10,10,10,51,10,10,10,10,10,10,10,10,10,10,10
 
             };
             for (int i = 0; i < 17; i++)
@@ -241,7 +240,7 @@ void Map::initialMap()
                 1,1,1,1,10,1,1,10,1,1,1,1,1,1,1,
                 1,1,1,1,10,1,1,10,1,1,1,1,1,1,1,
                 1,1,1,1,10,1,1,10,1,1,1,1,1,1,1,
-                10,1,1,10,1,1,1,10,1,1,1,1,1,1,1,
+                10,40,40,10,1,1,1,10,1,1,1,1,1,1,1,
                 54,1,1,1,1,1,1,10,1,1,1,1,1,1,1,
                 1,1,1,1,1,21,1,10,1,1,1,1,1,1,1,
                 10,10,10,10,10,1,1,10,1,1,1,1,1,1,1,
@@ -305,8 +304,8 @@ void Map::initialMap()
                 10,10,10,10,10,10,10,1,10,10,10,10,10,10,10,
                 10,10,10,10,10,10,10,1,10,10,10,10,10,10,10,
                 10,10,10,10,1,1,1,1,1,1,1,1,1,1,1,
-                10,10,10,10,1,1,1,1,1,1,1,1,1,1,1,
-                10,10,10,10,1,1,1,1,1,1,1,1,10,1,1,
+                10,10,10,10,1,40,40,1,1,1,1,1,1,1,1,
+                10,10,10,10,1,40,40,1,1,1,1,1,10,1,1,
                 53,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,23,10,10,1,1,1,1,1,1,1,1,1,1,1,
                 10,10,10,10,1,1,1,1,1,1,1,10,10,1,1,
