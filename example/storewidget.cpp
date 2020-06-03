@@ -17,6 +17,13 @@ void StoreWidget::initialStoreWin()
     text1->setGeometry(init_x,10,length,width);
     text2->setGeometry(init_x,50,length,width);
 
+    for (int i=0; i<MaxOption; ++i)
+    {
+        op[i] = new QLabel(StoreWin);
+        op[i]->hide();
+    }
+    exitOption = new QLabel(StoreWin);
+    exitOption->hide();
 
     text1->setAlignment(Qt::AlignCenter);
     text2->setAlignment(Qt::AlignCenter);
@@ -35,17 +42,25 @@ void StoreWidget::initialStoreWin()
 void StoreWidget::set_store(const QStringList& item, const QVector<int>& price)
 {
     if (item.size() != price.size()) qDebug()<<"wrong item num";
+    QFont font("Consolas", 12, 30);
+    for (int i=0; i<MaxOption; ++i)
+    {
+        op[i]->hide();
+    }
+    exitOption->hide();
     for (int i=0; i<item.size(); ++i)
     {
         op[i] = new QLabel(StoreWin);
         op[i]->setAlignment(Qt::AlignCenter);
-        op[i]->setText("buy " + item[i] + " $" + QString::number(price[i]));
+        op[i]->setFont(font);
+        op[i]->setText(item[i] + " $" + QString::number(price[i]));
         op[i]->setGeometry(init_x, init_y+i*interval, length, width);
+        op[i]->show();
     }
-    exitOption = new QLabel(StoreWin);
     exitOption->setAlignment(Qt::AlignCenter);
     exitOption->setText("Leave");
     exitOption->setGeometry(init_x, init_y+item.size()*interval, length, width);
+    exitOption->show();
     OptionBox->raise();
     OptionNum = item.size()+1;
 }

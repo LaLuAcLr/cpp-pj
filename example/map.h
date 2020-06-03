@@ -8,13 +8,13 @@ using namespace std;
 struct Tools
 {
     QString name;
-    int function;
     int level;
 };
 struct Items
 {
     QMap<QString, int> seed;
-
+    int sp; // 0=orig 1=jade 2=spoon 3=jewel 4=ring
+    QMap<QString, int> tool;
 };
 struct charactor
 {
@@ -58,6 +58,7 @@ private:
     void initialMapFloor();
     void initialNPCpic();//初始化npc图片
     void initialnpc();
+    void initialitem(struct Items& item);
 public:
     charactor role;
     NPC npc[10];

@@ -11,6 +11,9 @@ void Farm::init_farm()
 {
     Day = 1;
     init_fruit();
+    init_sp();
+    init_pickhead();
+    init_rod();
 
     MainLayout = new QHBoxLayout(this);
     MainLayout->setContentsMargins(0, 0, 0, 0);
@@ -61,6 +64,38 @@ void Farm::init_fruit()
     }
     m.initialseed(keys);
 }
+void Farm::init_pickhead()
+{
+    QJsonObject pick = read_item(":/save.json").value("pickhead").toObject();
+    QStringList keys = pick.keys();
+    foreach(QString key, keys)
+    {
+        QJsonObject subobj = pick.value(key).toObject();
+        pickhead_list.insert(key, subobj["price"].toInt());
+    }
+}
+
+void Farm::init_sp()
+{
+    QJsonObject sp = read_item(":/save.json").value("sp").toObject();
+    QStringList keys = sp.keys();
+    foreach(QString key, keys)
+    {
+        QJsonObject subobj = sp.value(key).toObject();
+        sp_list.insert(key, subobj["price"].toInt());
+    }
+}
+
+void Farm::init_rod()
+{
+    QJsonObject rod = read_item(":/save.json").value("rod").toObject();
+    QStringList keys = rod.keys();
+    foreach(QString key, keys)
+    {
+        QJsonObject subobj = rod.value(key).toObject();
+        rod_list.insert(key, subobj["price"].toInt());
+    }
+}
 
 void Farm::init_mapWidget()
 {
@@ -84,15 +119,86 @@ void Farm::set_store_veg()
 {
     if (m.floor != 0) return;
     int n = fruit_list.size();
-    qDebug()<<"fruit_list_size="<<n;
     QStringList keys = fruit_list.keys();
     QVector<int> price;
     for (int i=0; i<n; ++i)
     {
         price.push_back(fruit_list[keys[i]]["seed_price"]);
         keys[i] += " seed";
+        keys[i] = "buy " + keys[i];
     }
     Store->set_store(keys, price);
+}
+void Farm::set_store_pickhead()
+{
+    if (m.floor != 1) return;
+    int n = pickhead_list.size();
+    QStringList keys = pickhead_list.keys();
+    QVector<int> price;
+    for (int i=0; i<n; ++i)
+    {
+        price.push_back(pickhead_list[keys[i]]);
+        keys[i] = "upgrade to " + keys[i] + " pick";
+    }
+    QStringList wanted_keys;
+    QVector<int> wanted_price;
+    if (m.role.item.tool["Pickhead"] == 3)
+    {
+        wanted_keys += "You have the best pick";
+        wanted_price.push_back(0);
+    }
+    else {
+        wanted_keys += keys[2-m.role.item.tool["Pickhead"]];     // Good, Better, Best
+        wanted_price.push_back(price[2-m.role.item.tool["Pickhead"]]);
+    }
+    n = sp_list.size();
+    QStringList new_keys = sp_list.keys();
+    for (int i=0; i<n; ++i)
+    {
+        price.push_back(sp_list[new_keys[i]]);
+        new_keys[i] = "buy " + new_keys[i];
+    }
+    int t[4] = {1, 3, 0, 2};    // jewel, spoon, jade, ring
+    if (m.role.item.sp == 4)
+    {
+        wanted_keys += "You've got everything";
+        wanted_price.push_back(0);
+    }
+    else {
+        wanted_keys += new_keys[t[m.role.item.sp]];
+        wanted_price.push_back(price[t[m.role.item.sp]]);
+    }
+    Store->set_store(wanted_keys, wanted_price);
+}
+void Farm::set_store_rod()
+{
+    if (m.floor != 3) return;
+    int n = rod_list.size();
+    QStringList keys = rod_list.keys();
+    QVector<int> price;
+    for (int i=0; i<n; ++i)
+    {
+        price.push_back(rod_list[keys[i]]);
+        keys[i] = "upgrade to " + keys[i] + " rod";
+    }
+    QStringList wanted_keys;
+    QVector<int> wanted_price;
+    if (m.role.item.tool["Rod"] == 3)
+    {
+        wanted_keys += "You have the best rod";
+        wanted_price.push_back(0);
+    }
+    else {
+        wanted_keys += keys[2-m.role.item.tool["Rod"]];     // Good, Better, Best
+        wanted_price.push_back(price[2-m.role.item.tool["Rod"]]);
+    }
+    Store->set_store(wanted_keys, wanted_price);
+}
+void Farm::set_princess()
+{
+    m.map[7][12][12] = 24 + m.role.item.sp;
+    set_message("You give the princess a gift");
+    start_msgtimer();
 }
 void Farm::init_dialogue()
 {
@@ -157,6 +263,39 @@ void Farm::init_map()
         }
     }
 }
+
+void Farm::reset_field(QJsonArray json_field)
+{
+    for (auto i=0;i<10;++i)
+    {
+        for (auto j=0;j<10;++j)
+        {
+            field[i][j]->set_status(json_field[i].toArray()[j].toInt());
+            field[i][j]->set_bg();
+        }
+    }
+}
+void Farm::reset_veg(QJsonArray json_veg)
+{
+    for (auto i=0;i<10;++i)
+    {
+        for (auto j=0;j<10;++j)
+        {
+            auto tmp_name = json_veg[i].toArray()[j].toObject()["name"].toString();
+            auto tmp_plant_day = json_veg[i].toArray()[j].toObject()["plant_day"].toInt();
+            if (tmp_plant_day == -1) continue;
+            veg[i][j]->refresh(tmp_name,tmp_plant_day, fruit_list[tmp_name]["small_grass_day"], fruit_list[tmp_name]["big_grass_day"], fruit_list[tmp_name]["ripe_day"]);
+            veg[i][j]->update_pic(Day);
+        }
+    }
+}
+void Farm::reset_day(int json_day)
+{
+    Day = json_day;
+    QString day_string = QString::number(Day);
+    label_day->setText("This is Day " + day_string);
+    regenerate_Info();
+}
 void Farm::change_dic(int n, int x, int y)
 {
     map[x][y]->hide();
@@ -212,6 +351,13 @@ void Farm::regenarate_Character()
 }
 void Farm::refresh_Character()
 {
+    Character->move(m.y*56, m.x*40);
+    Character->turn_direction(1);
+}
+void Farm::refresh_Character_Load(QJsonObject role)
+{
+    m.x = role.value("pos_x").toInt();
+    m.y = role.value("pos_y").toInt();
     Character->move(m.y*56, m.x*40);
     Character->turn_direction(1);
 }
@@ -359,6 +505,7 @@ void Farm::change_tool(QString t)
 {
     qDebug()<<t;
     m.role.tool.name = t;
+    m.role.tool.level = m.role.item.tool[t];
     this->parentWidget()->setFocus();
 }
 void Farm::change_seed(QString t)
@@ -439,7 +586,7 @@ void Farm::init_infowidget()
     money->setGeometry(150, 110, 40, 40);
 
     tool = new QComboBox(infoWidget);
-    tool->addItems(QStringList{"None", "Hoe", "Seed", "Knife"});
+    tool->addItems(QStringList{"None", "Hoe", "Seed", "Knife", "Pickhead", "Rod"});
     tool->setStyleSheet("border-image: url(:/now/labelbg.png);");
     tool->setGeometry(150, 160, 100, 20);
     connect(tool, SIGNAL(currentTextChanged(QString)), this, SLOT(change_tool(QString)));
@@ -466,6 +613,7 @@ void Farm::init_infowidget()
     save->setText("Save");
     save->setStyleSheet(button_style);
     save->setGeometry(20, 500, 100, 40);
+    connect(save, SIGNAL(clicked()), this, SLOT(save_func()));
 
     load = new QPushButton(infoWidget);
     load->setText("Load");
@@ -482,7 +630,104 @@ void Farm::init_infowidget()
 }
 void Farm::regenerate_Info(){
     QFont fontNum("Consolas",10 );
+    name->setText(m.role.name);
     stamina->setText(QString::number(m.role.stamina));
     money->setText(QString::number(m.role.money));
 }
 
+void Farm::regenerate_Info_Load(QJsonObject role){
+    m.role.name = role.value("name").toString();
+    m.role.stamina = role.value("stamina").toInt();
+    m.role.money = role.value("money").toInt();
+    auto tmp_seed = role.value("item").toObject().value("seed").toObject();
+    for (auto i = tmp_seed.begin();i != tmp_seed.end(); ++i) {
+        m.role.item.seed[i.key()] = i.value().toInt();
+        qDebug() << i.key() << i.value().toInt();
+    }
+
+    //test seed
+    QStringList keys = m.role.item.seed.keys();
+    foreach (auto key, keys)
+        if (m.role.item.seed[key] != 0 && seed->findText(key) == -1)
+            seed->addItem(key);
+    // for tool
+    /*
+    auto tmp_tool = role.value("item").toObject().value("tool").toObject();
+    for (auto i = tmp_tool.begin();i != tmp_tool.end(); ++i) {
+        m.role.item.tool[i.key()] = i.value().toInt();
+    }
+    */
+    m.role.item.sp = role.value("item").toObject().value("sp").toInt();
+    QFont fontNum("Consolas",10 );
+    name->setText(m.role.name);
+    stamina->setText(QString::number(m.role.stamina));
+    money->setText(QString::number(m.role.money));
+}
+
+void Farm::save_func() {
+    qDebug() << "try to open file!";
+    QFile save_js_file(QApplication::applicationDirPath() + "/../../example/json/save.json");
+    if(!save_js_file.open(QIODevice::WriteOnly)) {
+        qDebug() << "File open failed!";
+    } else {
+        qDebug() <<"File open successfully!";
+    }
+
+    QJsonDocument save_doc;
+    QJsonObject save_obj;
+
+
+    save_obj["days"] = Day;
+
+
+    QJsonArray json_field;
+    for(auto i = 0; i < 10; ++i)
+    {
+        QJsonArray field_rol;
+        for(auto j = 0; j < 10; ++j) {
+            field_rol.append(field[i][j]->get_status());
+        }
+        json_field.append(field_rol);
+    }
+    save_obj["field"] = json_field;
+
+    QJsonArray json_veg;
+    for(auto i = 0; i < 10; ++i)
+    {
+        QJsonArray veg_rol;
+        for(auto j = 0; j < 10; ++j) {
+            QJsonObject veg_status;
+            veg_status["name"] = veg[i][j]->get_name();
+            veg_status["plant_day"] = veg[i][j]->get_plant_day();
+            veg_rol.append(veg_status);
+        }
+        json_veg.append(veg_rol);
+    }
+    save_obj["veg"] = json_veg;
+
+    QJsonObject json_role;
+    json_role["name"] = m.role.name;
+    json_role["money"] = m.role.money;
+    json_role["stamina"] = m.role.stamina;
+    json_role["pos_x"] = m.x;
+    json_role["pos_y"] = m.y;
+    QJsonObject json_item;
+    json_item["sp"] = m.role.item.sp;
+    QJsonObject json_seed;
+    for (auto i = m.role.item.seed.begin(); i != m.role.item.seed.end(); ++i) {
+        json_seed[i.key()] = i.value();
+    }
+    json_item["seed"] = json_seed;
+    QJsonObject json_tool;
+    for (auto i = m.role.item.tool.begin(); i != m.role.item.tool.end(); ++i) {
+        json_tool[i.key()] = i.value();
+    }
+    json_item["tool"] = json_tool;
+    json_role["item"] = json_item;
+    save_obj["role"] = json_role;
+
+
+    save_doc.setObject(save_obj);
+    save_js_file.write(save_doc.toJson(QJsonDocument::Indented));
+    save_js_file.close();
+}

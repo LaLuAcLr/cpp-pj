@@ -18,12 +18,14 @@ SOURCES += main.cpp\
     StartMenu.cpp \
     Window.cpp \
     character.cpp \
+    collect.cpp \
     dialogue.cpp \
         mainwindow.cpp \
     map.cpp \
     maze.cpp \
     interface.cpp \
     Dungeon.cpp \
+    namemenu.cpp \
     storewidget.cpp
 
 HEADERS  += mainwindow.h \
@@ -32,11 +34,13 @@ HEADERS  += mainwindow.h \
     StartMenu.h \
     Window.h \
     character.h \
+    collect.h \
     dialogue.h \
     map.h \
     maze.h \
     interface.h \
     Dungeon.h \
+    namemenu.h \
     storewidget.h
 
 FORMS    +=

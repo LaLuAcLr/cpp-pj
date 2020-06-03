@@ -121,3 +121,7 @@ Put anything you think important in this
 4. 商店、宝玉 thd
 
 --6.1
+
+能做的都做完了，剩下就是debug和测试了！
+
+--6.3

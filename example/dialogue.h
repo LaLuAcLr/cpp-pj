@@ -22,7 +22,7 @@ private:
     int border_color_it;
     int npcchoose;
     QString OptionBoxColor[6]= {"FFFFFF", "CCCCCC", "999999", "666666", "999999", "CCCCCC"};
-    QString NPC_name[5]={"NPC1","NPC2","NPC3","NPC4","NPC5"};
+    QString NPC_name[10]={"NPC1","NPC2","NPC3","NPC4","NPC5","NPC5","NPC5","NPC5","NPC5"};
     QString NPC_words[10][5];
     QTimer *OptionBoxTimer;
     QGraphicsView *OptionBox;

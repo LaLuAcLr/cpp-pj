@@ -23,8 +23,7 @@ StartMenu::StartMenu(QWidget *parent) :
     probar->hide();
 
     QFont font("Consolas" ,16, 55);
-    QString button_style="QPushButton{background-color:transparent;color:white;border-radius:5px;}"
-                         "QPushButton:hover{background-color:palegreen; color: orangered;}"
+    QString button_style="QPushButton{background-color:palegreen; color: orangered;border-radius:5px}"
                          "QPushButton:pressed{background-color:aquamarine;border-style:inset;}";
 
     button_start = new QPushButton(this);
@@ -57,7 +56,7 @@ StartMenu::StartMenu(QWidget *parent) :
 void StartMenu::paintEvent(QPaintEvent *)
 {
     painter = new QPainter(this);
-    QImage pixmap(":/now/startmenu.png");
+    QImage pixmap(":/now/bg.png");
     painter->drawImage(QRectF(0, 0, 840, 680), pixmap);
     painter->end();
 }

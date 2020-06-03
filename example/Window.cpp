@@ -10,13 +10,48 @@ Window::Window(QWidget *parent) :
 
 void Window::show_farm()
 {
+    farm->m.role.name=namemenu->NameEdit->text();
+    farm->regenerate_Info();
     farm->refresh_Character();
-    startmenu->hide();
+    namemenu->hide();
     farm->show();
     farm->setFocus();
     this->resize(1140, 680);
 }
+void Window::load_func() {
+    QFile file(QApplication::applicationDirPath() + "/../../example/json/save.json");
+    if(!file.open(QIODevice::ReadOnly))
+        qDebug() << "read json file failed";
+    QByteArray ba = file.readAll();
+    QJsonParseError e;
+    QJsonDocument json_doc = QJsonDocument::fromJson(ba, &e);
+    QJsonObject root_object = json_doc.object();
+    QJsonObject role_object = root_object.value("role").toObject();
+    QJsonArray field_object = root_object.value("field").toArray();
+    QJsonArray veg_object = root_object.value("veg").toArray();
+    farm->regenerate_Info_Load(role_object);
+    farm->refresh_Character_Load(role_object);
+    qDebug()<<"day:";
+    farm->reset_day(root_object.value("days").toInt());
+    qDebug()<<"field:";
+    farm->reset_field(field_object);
+    qDebug()<<"veg:";
+    farm->reset_veg(veg_object);
+    farm->show();
+    farm->setFocus();
+    this->resize(1140, 680);
+    file.close();
+}
+void Window::show_nameset()
+{
+    startmenu->hide();
+    namemenu->show();
+    namemenu->setFocus();
 
+    qDebug()<<"name";
+    qDebug()<<namemenu->NameEdit->text();
+    farm->regenerate_Info();
+}
 void Window::show_mainmenu()
 {
     farm->hide();
@@ -26,12 +61,15 @@ void Window::show_mainmenu()
 
 void Window::init_window()
 {
+    namemenu =new Namemenu(this);
     startmenu = new StartMenu(this);
     farm = new Farm(this);
     farm->hide();
     startmenu->show();
 
-    connect(startmenu->button_start, SIGNAL(clicked()), this, SLOT(show_farm()));
+    connect(startmenu->button_start, SIGNAL(clicked()), this, SLOT(show_nameset()));
+    connect(startmenu->button_load, SIGNAL(clicked()), this, SLOT(load_func()));
+    connect(namemenu->SetDone,SIGNAL(clicked()), this, SLOT(show_farm()));
     connect(farm->mainmenu, SIGNAL(clicked()), this, SLOT(show_mainmenu()));
     connect(farm->Store->haveBuyTimer,SIGNAL(timeout()),this,SLOT(BuyinStore()));
 }
@@ -100,6 +138,7 @@ void Window::keyPressEvent(QKeyEvent *ev)
     {
         qDebug()<<"F";
         direction_field();
+        mine_or_fish();
         break;
     }
     case Qt::Key_G:
@@ -116,7 +155,7 @@ void Window::keyPressEvent(QKeyEvent *ev)
     case Qt::Key_Q:
     {
         if(check_outbound()) return;
-        if(judge_interaction([](int x) { return x>=20 && x<=30; }))
+        if(judge_interaction([](int x) { return x>=20 && x<30; }))
         {
             int n=0;
             if(farm->Character->get_curr_dir()==0)
@@ -139,7 +178,12 @@ void Window::keyPressEvent(QKeyEvent *ev)
                 n=farm->m.map[farm->m.floor][farm->m.x][(farm->m.y)-1]-20;
                 farm->change_dic(3,farm->m.x,(farm->m.y)-1);
             }
-            Opendialogue(n);
+            if(n >= 4 && farm->m.role.item.sp > n-4)
+            {
+                farm->set_princess();
+            }
+            else
+                Opendialogue(n);
             qDebug()<<"Q";
         }
         break;
@@ -151,19 +195,67 @@ void Window::keyPressEvent(QKeyEvent *ev)
 void Window::OpenStore()
 {
     farm->Store->show();
+    farm->set_store_veg();
+    farm->set_store_pickhead();
+    farm->set_store_rod();
 }
 void Window::BuyinStore()
 {
-    QStringList keys = farm->get_fruit_list().keys();
-    int opt = farm->Store->chooseOption;
-    farm->m.role.money -= farm->get_fruit_list()[keys[opt]]["seed_price"];
-    farm->m.role.item.seed[keys[opt]]++;
-    farm->add_seed();
-    farm->regenerate_Info();
-    qDebug()<<"buy"<<farm->Store->chooseOption;
-    farm->Store->haveBuyTimer->stop();
-    farm->check_money();
-    farm->Store->setFocus();
+    if(farm->m.floor==0)
+    {
+        QStringList keys = farm->get_fruit_list().keys();
+        int opt = farm->Store->chooseOption;
+        farm->m.role.money -= farm->get_fruit_list()[keys[opt]]["seed_price"];
+        farm->m.role.item.seed[keys[opt]]++;
+        farm->add_seed();
+        farm->regenerate_Info();
+        qDebug()<<"buy"<<farm->Store->chooseOption;
+        farm->Store->haveBuyTimer->stop();
+        farm->check_money();
+        farm->Store->setFocus();
+    }
+    else if(farm->m.floor==1)
+    {
+        int opt = farm->Store->chooseOption;
+        if(opt == 0){
+            if (farm->m.role.item.tool["Pickhead"] == 3) return;
+            QStringList keys = farm->get_pickhead_list().keys();
+            qDebug()<<keys[2-farm->m.role.item.tool["Pickhead"]];
+            farm->m.role.money -= farm->get_pickhead_list()[keys[2-farm->m.role.item.tool["Pickhead"]]];
+            farm->m.role.item.tool["Pickhead"]++;
+        }
+        else if(opt == 1){
+            if (farm->m.role.item.sp == 4) return;
+            QStringList keys = farm->get_sp_list().keys();
+            int t[4] = {1, 3, 0, 2};    // jewel, spoon, jade, ring
+            qDebug()<<keys[t[farm->m.role.item.sp]];
+            farm->m.role.money -= farm->get_sp_list()[keys[t[farm->m.role.item.sp]]];
+            farm->m.role.item.sp++;
+        }
+        farm->regenerate_Info();
+        //qDebug()<<"buy"<<farm->Store->chooseOption;
+        farm->Store->haveBuyTimer->stop();
+        farm->check_money();
+        farm->Store->setFocus();
+        farm->set_store_pickhead();
+    }
+    else if(farm->m.floor == 3)
+    {
+        int opt = farm->Store->chooseOption;
+        if(opt == 0){
+            if (farm->m.role.item.tool["Rod"] == 3) return;
+            QStringList keys = farm->get_rod_list().keys();
+            qDebug()<<keys[2-farm->m.role.item.tool["Rod"]];
+            farm->m.role.money -= farm->get_rod_list()[keys[2-farm->m.role.item.tool["Rod"]]];
+            farm->m.role.item.tool["Rod"]++;
+        }
+        farm->regenerate_Info();
+        //qDebug()<<"buy"<<farm->Store->chooseOption;
+        farm->Store->haveBuyTimer->stop();
+        farm->check_money();
+        farm->Store->setFocus();
+        farm->set_store_rod();
+    }
 }
 void Window::Opendialogue(int n)
 {
@@ -264,7 +356,9 @@ void Window::Charactermove(int dir)
 void Window::PortalJump()
 {
     if(farm->m.map[farm->m.floor][farm->m.x][farm->m.y]>=50)
+    {
         farm->m.initialCharacterPos(farm->m.p[farm->m.map[farm->m.floor][farm->m.x][farm->m.y]-50]);
+    }
     else
         qDebug()<<"no portal";
 }
@@ -282,3 +376,33 @@ void Window::direction_field()
         farm->interact_field(farm->m.x-4, farm->m.y-5);
 }
 
+void Window::mine_or_fish()
+{
+    if(check_outbound()) return;
+    if(farm->m.role.stamina >= 10)
+    {
+        if(farm->m.role.tool.name=="Pickhead" && judge_interaction([](int x) { return x==30; }))
+        {
+            farm->mine.do_mining(farm->m.role.item.tool["Pickhead"]);
+            farm->set_message(farm->mine.get_mineral[farm->mine.mineral]);
+            farm->start_msgtimer();
+            farm->m.role.stamina -= 10;
+            farm->m.role.money += farm->mine.minemoney[farm->mine.mineral];
+            farm->regenerate_Info();
+        }
+        else if(farm->m.role.tool.name=="Rod" && judge_interaction([](int x) { return x==31; }))
+        {
+            farm->fishes.do_fishing(farm->m.role.item.tool["Rod"]);
+            farm->set_message(farm->fishes.get_fish[farm->fishes.fish]);
+            farm->start_msgtimer();
+            farm->m.role.stamina -= 10;
+            farm->m.role.money += farm->fishes.fishmoney[farm->fishes.fish];
+            farm->regenerate_Info();
+        }
+    }
+    else
+    {
+        farm->set_message("You don't have enough stamina to do that");
+        farm->start_msgtimer();
+    }
+}

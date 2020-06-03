@@ -11,6 +11,24 @@
       "Pineapple":{"name":"菠萝","days":{"ripe":13,"big_grass":"10","small_grass":2},"value":3000,"seed_price":500},
       "Potato":{"name":"土豆","days":{"ripe":8,"big_grass":7,"small_grass":3},"value":700,"seed_price":80},
       "Tomato":{"name":"番茄","days":{"ripe":11,"big_grass":9,"small_grass":2},"value":2000,"seed_price":200}
-
+  },
+  "pickhead":
+  {
+      "Good":{"price":100},
+      "Better":{"price":200},
+      "Best":{"price":300}
+  },
+  "sp":
+  {
+      "Jewel":{"price":100},
+      "Spoon":{"price":200},
+      "Jade":{"price":300},
+      "Ring":{"price":400}
+  },
+  "rod":
+  {
+      "Good":{"price":100},
+      "Better":{"price":200},
+      "Best":{"price":300}
   }
 }

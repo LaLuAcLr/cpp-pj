@@ -76,5 +76,6 @@
         <file>npc/npc4.2.png</file>
         <file>npc/npc4.3.png</file>
         <file>save.json</file>
+        <file>now/bg.png</file>
     </qresource>
 </RCC>
