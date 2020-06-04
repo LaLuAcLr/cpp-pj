@@ -1,5 +1,5 @@
 {
-    "days": 5,
+    "days": 1,
     "field": [
         [
             0,
@@ -32,7 +32,31 @@
             0,
             0,
             0,
-            3,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -58,30 +82,6 @@
             0,
             0,
             0,
-            0,
-            0
-        ],
-        [
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        [
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            3,
             0,
             0
         ],
@@ -125,9 +125,9 @@
     "role": {
         "item": {
             "seed": {
-                "Beet": 1,
-                "Cabbage": 1,
-                "Carrot": 1,
+                "Beet": 0,
+                "Cabbage": 0,
+                "Carrot": 0,
                 "Corn": 0,
                 "Cucumber": 0,
                 "Eggplant": 0,
@@ -146,10 +146,10 @@
                 "Seed": 0
             }
         },
-        "money": 570,
-        "name": "asdhkahflk",
-        "pos_x": 12,
-        "pos_y": 2,
+        "money": 2000,
+        "name": "t",
+        "pos_x": 5,
+        "pos_y": 3,
         "stamina": 100
     },
     "veg": [
@@ -263,48 +263,6 @@
                 "plant_day": -1
             },
             {
-                "name": "Cabbage",
-                "plant_day": 1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            }
-        ],
-        [
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
-                "name": "",
-                "plant_day": -1
-            },
-            {
                 "name": "",
                 "plant_day": -1
             },
@@ -435,8 +393,50 @@
                 "plant_day": -1
             },
             {
-                "name": "Eggplant",
-                "plant_day": 1
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
             },
             {
                 "name": "",

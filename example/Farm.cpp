@@ -424,7 +424,7 @@ void Farm::interact_field(int i, int j)
     }
     if (field_status == 1)     // hoed
     {
-        if (tool == QString("Seed")) {
+        if (tool == QString("Seed") && m.role.seed != "") {
             //cout << "种菜" << endl;
             field[i][j]->set_status(2);
             field[i][j]->set_bg();

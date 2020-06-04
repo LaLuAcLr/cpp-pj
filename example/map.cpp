@@ -11,6 +11,7 @@ void Map::initialrole()
     role.name = "LaLuAcLr";
     role.money = 2000;
     role.stamina = 100;
+    role.seed = "";
     initialtool(role.tool);
     initialitem(role.item);
 }

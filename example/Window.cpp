@@ -379,6 +379,7 @@ void Window::direction_field()
 void Window::mine_or_fish()
 {
     if(check_outbound()) return;
+    if(!judge_interaction([](int x) { return (x==30 || x==31); })) return;
     if(farm->m.role.stamina >= 10)
     {
         if(farm->m.role.tool.name=="Pickhead" && judge_interaction([](int x) { return x==30; }))

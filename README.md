@@ -125,3 +125,29 @@ Put anything you think important in this
 能做的都做完了，剩下就是debug和测试了！
 
 --6.3
+
+bugs：
+
+save里没有floor wm
+
+newgame背景故事 thd ysr
+
+做掉小人 thd
+
+商店界面做成半透明 thd
+
+bgm ysr
+
+剧本 ysr
+
+newgame重置画面 szj
+
+按键字体、样式 szj
+
+用户手册 szj
+
+*没有胜利结局 szj
+
+图标
+
+--6.4
