@@ -16,6 +16,7 @@
 #include <QJsonDocument>
 #include <QMessageBox>
 #include <QStringList>
+#include <QMediaPlayer>
 #include <QDebug>
 
 #include "map.h"
@@ -39,17 +40,18 @@ private:
     void init_store();
     void init_dialogue();
     void init_infowidget(); // info column
-    void init_fruit();
-    void init_pickhead();
-    void init_sp();
-    void init_rod();
-    void init_GetitemWin();
+    void init_fruit();  // fruit list
+    void init_pickhead();   // pickhead store
+    void init_sp();     // special items
+    void init_rod();    // rod store
+    void init_GetitemWin();     // pop-up msg
 
 private:
     QGridLayout *MapLayout;
     QHBoxLayout *MainLayout;
 public:
-    void refresh_Character();
+    void restart_Character();
+    void restart_farm();
     void refresh_Character_Load(QJsonObject);
     void regenarate_Character();
     void regenarate_Map();
@@ -58,6 +60,7 @@ public:
     void interact_field(int i, int j);
     void show_field();
     void hide_field();
+    void restart_field();
     void set_message(QString m) { msg = m; }
     QString get_message() const { return msg; }
     void start_msgtimer() { GetitemTimer->start(100); }
@@ -73,6 +76,7 @@ public:
     void add_seed();
     void remove_seed();
     void set_princess();
+    void win();
     void reset_field(QJsonArray);
     void reset_veg(QJsonArray);
     void reset_day(int);
@@ -116,6 +120,8 @@ private:
     QPushButton *add_day;
     QPushButton *save;
     QPushButton *load;
+    QMediaPlayer *sound;
+    QTimer *soundTimer;
 public:
     Map m;
     character *Character;

@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>now/about.ico</file>
         <file>now/badmushroom.png</file>
-        <file>now/Character.png</file>
         <file>now/Controlbg.png</file>
         <file>now/farm.png</file>
         <file>now/greenchomper.png</file>
@@ -25,6 +24,8 @@
         <file>now/floor6.png</file>
         <file>now/floor7.png</file>
         <file>now/floor8.png</file>
+        <file>now/trans.png</file>
+        <file>now/bl.png</file>
         <file>man/back_1.png</file>
         <file>man/back_2.png</file>
         <file>man/back_3.png</file>
@@ -77,5 +78,10 @@
         <file>npc/npc4.3.png</file>
         <file>save.json</file>
         <file>now/bg.png</file>
+        <file>now/bg2.png</file>
+        <file>bgm/BGM1.mp3</file>
+        <file>bgm/BGM2.mp3</file>
+        <file>bgm/BGM3.mp3</file>
+        <file>bgm/addaday.mp3</file>
     </qresource>
 </RCC>

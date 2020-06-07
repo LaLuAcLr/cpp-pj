@@ -22,11 +22,12 @@ private:
     int border_color_it;
     int npcchoose;
     QString OptionBoxColor[6]= {"FFFFFF", "CCCCCC", "999999", "666666", "999999", "CCCCCC"};
-    QString NPC_name[10]={"NPC1","NPC2","NPC3","NPC4","NPC5","NPC5","NPC5","NPC5","NPC5"};
+    QString NPC_name[10]={"农场的老爷爷","市民","路过的矿工","渔民","公主","公主","公主","公主","公主"};
     QString NPC_words[10][5];
     QTimer *OptionBoxTimer;
     QGraphicsView *OptionBox;
     QWidget *StoreWin;
+    QPainter *painter;
     QLabel *text1;
     QLabel *text2;
     QLabel *op1;
@@ -35,6 +36,7 @@ private:
     void keyPressEvent(QKeyEvent *event);//当前类中的键盘事件与mainwindow中的键盘事件互不影响
     void showEvent(QShowEvent *);//重写窗口显示事件,为了使当前窗口获得焦点
     void initialwords();
+    void paintEvent(QPaintEvent *);
 public slots:
     void initialStoreWin(int);//初始化对话界面
     void OptionBoxborderChanged();

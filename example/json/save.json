@@ -1,5 +1,5 @@
 {
-    "days": 1,
+    "days": 6,
     "field": [
         [
             0,
@@ -123,6 +123,7 @@
         ]
     ],
     "role": {
+        "floor": 3,
         "item": {
             "seed": {
                 "Beet": 0,
@@ -147,9 +148,9 @@
             }
         },
         "money": 2000,
-        "name": "t",
-        "pos_x": 5,
-        "pos_y": 3,
+        "name": "256",
+        "pos_x": 10,
+        "pos_y": 7,
         "stamina": 100
     },
     "veg": [

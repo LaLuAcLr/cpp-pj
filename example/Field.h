@@ -12,6 +12,7 @@ public:
     Field(QWidget *parent = 0);
 public:
     void set_bg();
+    void restart();
     void set_status(int s) { status = s; }
     int get_status() const { return status; }
 private:

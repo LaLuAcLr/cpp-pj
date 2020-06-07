@@ -12,11 +12,15 @@ void Window::show_farm()
 {
     farm->m.role.name=namemenu->NameEdit->text();
     farm->regenerate_Info();
-    farm->refresh_Character();
+    farm->restart_farm();
     namemenu->hide();
     farm->show();
     farm->setFocus();
     this->resize(1140, 680);
+    BGM->pause();
+    BGM->setMedia(QUrl("qrc:/bgm/BGM2.mp3"));
+    BGM->play();
+    BGMTimer->start(10);
 }
 void Window::load_func() {
     QFile file(QApplication::applicationDirPath() + "/../../example/json/save.json");
@@ -57,6 +61,11 @@ void Window::show_mainmenu()
     farm->hide();
     startmenu->show();
     this->resize(840, 680);
+
+    BGM->pause();
+    BGM->setMedia(QUrl("qrc:/bgm/BGM3.mp3"));
+    BGM->play();
+    BGMTimer->start(10);
 }
 
 void Window::init_window()
@@ -66,12 +75,20 @@ void Window::init_window()
     farm = new Farm(this);
     farm->hide();
     startmenu->show();
+    BGM=new QMediaPlayer(this);//背景音乐
+    BGM->setMedia(QUrl("qrc:/bgm/BGM3.mp3"));
+    BGM->setVolume(30);
+    BGMTimer=new QTimer(this);
 
+    connect(BGMTimer,SIGNAL(timeout()),this,SLOT(CheckBGMstate()));
     connect(startmenu->button_start, SIGNAL(clicked()), this, SLOT(show_nameset()));
     connect(startmenu->button_load, SIGNAL(clicked()), this, SLOT(load_func()));
     connect(namemenu->SetDone,SIGNAL(clicked()), this, SLOT(show_farm()));
     connect(farm->mainmenu, SIGNAL(clicked()), this, SLOT(show_mainmenu()));
     connect(farm->Store->haveBuyTimer,SIGNAL(timeout()),this,SLOT(BuyinStore()));
+
+    BGM->play();
+    BGMTimer->start(10);
 }
 bool Window::check_outbound()
 {
@@ -259,6 +276,7 @@ void Window::BuyinStore()
 }
 void Window::Opendialogue(int n)
 {
+    //farm->dialogue->hide();
     farm->dialogue->initialStoreWin(n);
     farm->dialogue->show();
 }
@@ -407,3 +425,13 @@ void Window::mine_or_fish()
         farm->start_msgtimer();
     }
 }
+void Window::CheckBGMstate()
+{
+
+   if(BGM->state()==0)//0代表停止 1代表播放 2代表暂停
+   {
+       BGM->play();
+       qDebug()<<QString::number(BGM->state());
+   }
+}
+

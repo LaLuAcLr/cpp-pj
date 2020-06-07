@@ -50,6 +50,7 @@ public:
     void initialCharacterPos(struct portal& p);//经过传送门后位置跳转
     void initialseed(const QStringList&);
     string dialogue(struct NPC& c);
+    void restart();
 private:
     void initialrole();
     void initialtool(struct Tools& tool);

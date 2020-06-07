@@ -8,6 +8,7 @@ Field::Field(QWidget *parent)
     hoe_pic = QPixmap(":/veg/field_hoed.png").scaled(45, 32, Qt::KeepAspectRatio);
     seed_pic = QPixmap(":/veg/field_seeded.png").scaled(45, 32, Qt::KeepAspectRatio);
     status = 0;
+    set_bg();
 }
 
 void Field::set_bg()
@@ -29,20 +30,20 @@ void Field::set_bg()
     }
 }
 
+void Field::restart()
+{
+    status = 0;
+    set_bg();
+}
+
 Veg::Veg(QWidget *parent)
     : QLabel(parent)
 {
     setFixedSize(56, 40);
     setAlignment(Qt::AlignCenter);
-    name = "";
-    setPixmap(QPixmap());
     big_grass = QPixmap(":/veg/grass_big.png").scaled(45, 32, Qt::KeepAspectRatio);
     small_grass = QPixmap(":/veg/grass_small.png").scaled(45, 32, Qt::KeepAspectRatio);
-    isRipe = false;
-    small_grass_day = -1;
-    big_grass_day = -1;
-    ripe_day = -1;
-    plant_day = -1;
+    restart();
 }
 
 void Veg::refresh(QString n, int plantday, int smallgrassday, int biggrassday, int ripeday)
@@ -59,6 +60,7 @@ void Veg::refresh(QString n, int plantday, int smallgrassday, int biggrassday, i
 void Veg::restart()
 {
     name = "";
+    isRipe = false;
     plant_day = -1;
     small_grass_day = -1;
     big_grass_day = -1;

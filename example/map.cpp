@@ -221,6 +221,20 @@ Map::Map()
     initialrole();
     initialnpc();
 }
+
+void Map::restart()
+{
+    initialMap();
+    role.item.seed.clear();
+    role.item.sp = 0;
+    foreach(auto key, role.item.tool)
+        key = 0;
+    role.money = 2000;
+    role.stamina = 100;
+    role.tool.name = "None";
+    role.tool.level = 0;
+    role.seed = "";
+}
 void Map::initialMap()
 {
     floor = 0;
@@ -391,7 +405,7 @@ void Map::initialMap()
                 10,1,10,1,10,1,1,1,1,10,1,1,1,1,10,
                 10,1,1,1,10,1,1,1,1,1,1,1,1,1,10,
                 10,10,1,1,10,1,1,1,1,1,1,1,1,1,10,
-                10,10,1,1,1,1,1,20,21,22,23,24,1,1,10,
+                10,10,1,1,1,1,1,1,1,1,1,1,1,1,10,
                 10,10,10,10,10,1,1,1,1,1,1,1,1,1,10,
                 10,10,10,10,10,1,1,1,10,10,10,10,10,1,10,
                 10,1,1,1,1,1,1,1,10,10,10,10,10,1,10,

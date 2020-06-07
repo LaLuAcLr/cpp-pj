@@ -23,17 +23,18 @@ private:
     const int init_x = 32;
     const int init_y = 92;
     const int interval = 48;
-    const int length = 260;
+    const int length = 300;
     const int width = 32;
     int OptionNum; //有多少个选项
     int border_color_it;
     QGraphicsView *OptionBox;
     QWidget *StoreWin;
+    QPainter *painter;
     QLabel *text1;
     QLabel *text2;
     QLabel *exitOption;
 private:
-
+    void paintEvent(QPaintEvent *);
     void keyPressEvent(QKeyEvent *event);//当前类中的键盘事件与mainwindow中的键盘事件互不影响
     void showEvent(QShowEvent *);//重写窗口显示事件,为了使当前窗口获得焦点
 public:

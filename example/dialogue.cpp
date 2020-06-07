@@ -15,9 +15,9 @@ void Dialogue::initialwords()
 
     NPC_words[1][0]="这里是连接各个地图的十字路口";
     NPC_words[1][1]="在左边的商店里可以购买珠宝或采矿工具";
-    NPC_words[1][2]="左侧通往LaLuAcLr亲王的城堡";
-    NPC_words[1][3]="下面通往黑市商人thd的采矿场";
-    NPC_words[1][4]="左边通往勇者wm的渔场";
+    NPC_words[1][2]="左侧通往亲王的城堡，你可以去里面寻找公主";
+    NPC_words[1][3]="下面通往采矿场，你可以消耗体力进行采矿";
+    NPC_words[1][4]="右边通往渔场，你可以消耗体力进行捕鱼";
 
     NPC_words[2][0]="这里是采矿场";
     NPC_words[2][1]="你可以走到矿石前按F进行采矿";
@@ -65,12 +65,15 @@ void Dialogue::initialStoreWin(int n)
     QFont font("Consolas" ,12, 30);
     this->setFont(font);
     StoreWin->setStyleSheet("color:white;background-color:black");
+
     text1=new QLabel(StoreWin);
     text2=new QLabel(StoreWin);
     op1=new QLabel(StoreWin);
     exitOption=new QLabel(StoreWin);
     OptionBox=new QGraphicsView(StoreWin);//最后构造的控件会在最上面
-    OptionBox->setStyleSheet("border:3px solid #FFFFFF;");
+
+    //OptionBox->setStyleSheet("border:3px solid #FFFFFF;");
+    OptionBox->setStyleSheet("border:3px solid #FFFFFF;background-color:transparent;");
 
     text1->setGeometry(32,10,150,32);
     text2->setGeometry(32,50,780,32);
@@ -169,4 +172,11 @@ void Dialogue::keyPressEvent(QKeyEvent *event)
 void Dialogue::showEvent(QShowEvent *)
 {
     this->setFocus();//设置焦点在当前窗口
+}
+void Dialogue::paintEvent(QPaintEvent *)
+{
+    painter = new QPainter(this);
+    QImage pixmap(":/now/bl.png");
+    painter->drawImage(QRectF(0, 0, 840, 680), pixmap);
+    painter->end();
 }

@@ -1,4 +1,4 @@
-#ifndef COLLECT_H
+﻿#ifndef COLLECT_H
 #define COLLECT_H
 #include <QString>
 #include <QStringList>
@@ -12,7 +12,7 @@ public:
     int mineral;
     int minemoney[5];
     QString get_mineral[5];
-    void do_mining(int n);
+    void do_mining(int n);  // 挖矿概率学
 };
 
 class fishing
@@ -25,7 +25,7 @@ public:
     int fish;
     int fishmoney[5];
     QString get_fish[5];
-    void do_fishing(int n);
+    void do_fishing(int n); // 钓鱼概率学
 };
 
 #endif // COLLECT_H

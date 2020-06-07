@@ -47,7 +47,7 @@ FORMS    +=
 
 QT += multimedia
 CONFIG += resources_big
-RC_ICONS = Maze&Dungeon.ico
+RC_ICONS = icon.ico
 
 RESOURCES += \
     now.qrc

@@ -2,14 +2,14 @@
 
 StoreWidget::StoreWidget(QWidget *parent) : QWidget(parent)
 {
-        initialStoreWin();
+    initialStoreWin();
 }
 void StoreWidget::initialStoreWin()
 {
     StoreWin=new QWidget(this);
     QFont font("Consolas", 12, 30);
     this->setFont(font);
-    StoreWin->setStyleSheet("color:white;background-color:black");
+    //StoreWin->setStyleSheet("color:white;background-color:black");
     text1=new QLabel(StoreWin);
     text2=new QLabel(StoreWin);
     OptionBox=new QGraphicsView(StoreWin);
@@ -61,6 +61,7 @@ void StoreWidget::set_store(const QStringList& item, const QVector<int>& price)
     exitOption->setText("Leave");
     exitOption->setGeometry(init_x, init_y+item.size()*interval, length, width);
     exitOption->show();
+    exitOption->setWindowOpacity(0.7);
     OptionBox->raise();
     OptionNum = item.size()+1;
 }
@@ -108,4 +109,11 @@ void StoreWidget::keyPressEvent(QKeyEvent *event)
 void StoreWidget::showEvent(QShowEvent *)
 {
     this->setFocus();//设置焦点在当前窗口
+}
+void StoreWidget::paintEvent(QPaintEvent *)
+{
+    painter = new QPainter(this);
+    QImage pixmap(":/now/bl.png");
+    painter->drawImage(QRectF(0, 0, 840, 680), pixmap);
+    painter->end();
 }

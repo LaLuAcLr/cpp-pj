@@ -8,6 +8,8 @@
 #include <QWidget>
 #include <QKeyEvent>
 #include <QDebug>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include "namemenu.h"
 class Window : public QMainWindow
 {
@@ -30,6 +32,7 @@ public slots:
     void Opendialogue(int n);
     void BuyinStore();
     void load_func();
+    void CheckBGMstate();//检查音乐状态
 private:
     void init_window();
     void Charactermove(int);
@@ -38,7 +41,11 @@ private:
     void mine_or_fish();
     bool check_outbound();
     bool judge_interaction(bool op(int));
-
+    void soundPlay(int CurrentIndex);
+private://音效
+    QMediaPlayer *BGM;
+    QTimer *BGMTimer;
+    QMediaPlayer *sound;
 
 };
 

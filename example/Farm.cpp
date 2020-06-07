@@ -28,6 +28,11 @@ void Farm::init_farm()
     MapLayout = new QGridLayout(mapWidget);
     MapLayout->setContentsMargins(0, 0, 0, 0);
     MapLayout->setSpacing(1);
+
+    sound=new QMediaPlayer(this);//背景音乐
+    sound->setMedia(QUrl("qrc:/bgm/addaday.mp3"));
+    sound->setVolume(200);
+
     init_map();
     init_Character();
     init_store();
@@ -112,7 +117,7 @@ void Farm::init_store()
 {
     Store=new StoreWidget(this);
     set_store_veg();
-    Store->setGeometry(292,50,300,700);
+    Store->setGeometry(292,50,350,700);
     Store->hide();
 }
 void Farm::set_store_veg()
@@ -199,6 +204,18 @@ void Farm::set_princess()
     m.map[7][12][12] = 24 + m.role.item.sp;
     set_message("You give the princess a gift");
     start_msgtimer();
+    qDebug()<<m.map[7][12][12]<<"princess";
+    win();
+}
+void Farm::win()
+{
+    if (m.map[7][12][12] == 28) // win
+    {
+        m.map[7][12][12] = 1;
+        set_message("You Win! Play more or Quit");
+        start_msgtimer();
+        m.map[5][11][11] = 27;
+    }
 }
 void Farm::init_dialogue()
 {
@@ -349,15 +366,43 @@ void Farm::regenarate_Character()
     Character->move(m.y*56, m.x*40);
     Character->raise();
 }
-void Farm::refresh_Character()
+void Farm::restart_Character()
 {
-    Character->move(m.y*56, m.x*40);
+    Character->move(1*56, 3*40);
     Character->turn_direction(1);
+    Character->raise();
+}
+void Farm::restart_farm()
+{
+    Day = 1;
+    init_sp();
+    init_rod();
+    init_fruit();
+    init_pickhead();
+    m.restart();
+    //init_store();
+    restart_field();
+    regenarate_Map();
+    regenerate_Info();
+    restart_Character();
+}
+void Farm::restart_field()
+{
+    for(int i=0; i<10; ++i)
+    {
+        for(int j=0; j<10; ++j)
+        {
+            field[i][j]->restart();
+            veg[i][j]->restart();
+        }
+    }
 }
 void Farm::refresh_Character_Load(QJsonObject role)
 {
     m.x = role.value("pos_x").toInt();
     m.y = role.value("pos_y").toInt();
+    m.floor = role.value("floor").toInt();
+    regenarate_Map();
     Character->move(m.y*56, m.x*40);
     Character->turn_direction(1);
 }
@@ -496,10 +541,10 @@ void Farm::hide_field()
 void Farm::add_day_func()
 {
     Day++;
-    QString day_string = QString::number(Day);
-    label_day->setText("This is Day " + day_string);
     m.role.stamina = 100;
     regenerate_Info();
+    sound->stop();
+    sound->play();
 }
 void Farm::change_tool(QString t)
 {
@@ -601,27 +646,25 @@ void Farm::init_infowidget()
     label_day->setStyleSheet("border-image: url(:/now/labelbg.png);");
     QString day_string = QString::number(Day);
     label_day->setText("This is Day " + day_string);
-    label_day->setGeometry(20, 400, 200, 40);
+    label_day->setGeometry(20, 450, 200, 40);
 
     add_day = new QPushButton(infoWidget);
     add_day->setText("Add a Day");
+    add_day->setFont(fontLabel);
     add_day->setStyleSheet(button_style);
-    add_day->setGeometry(20, 450, 100, 40);
+    add_day->setGeometry(20, 500, 100, 40);
     connect(add_day, SIGNAL(clicked()), this, SLOT(add_day_func()));
 
     save = new QPushButton(infoWidget);
     save->setText("Save");
+    save->setFont(fontLabel);
     save->setStyleSheet(button_style);
-    save->setGeometry(20, 500, 100, 40);
+    save->setGeometry(20, 550, 100, 40);
     connect(save, SIGNAL(clicked()), this, SLOT(save_func()));
-
-    load = new QPushButton(infoWidget);
-    load->setText("Load");
-    load->setStyleSheet(button_style);
-    load->setGeometry(20, 550, 100, 40);
 
     mainmenu = new QPushButton(infoWidget);
     mainmenu->setText("MainMenu");
+    mainmenu->setFont(fontLabel);
     mainmenu->setStyleSheet(button_style);
     mainmenu->setGeometry(20, 600, 100, 40);
 
@@ -633,6 +676,8 @@ void Farm::regenerate_Info(){
     name->setText(m.role.name);
     stamina->setText(QString::number(m.role.stamina));
     money->setText(QString::number(m.role.money));
+    QString day_string = QString::number(Day);
+    label_day->setText("This is Day " + day_string);
 }
 
 void Farm::regenerate_Info_Load(QJsonObject role){
@@ -711,6 +756,7 @@ void Farm::save_func() {
     json_role["stamina"] = m.role.stamina;
     json_role["pos_x"] = m.x;
     json_role["pos_y"] = m.y;
+    json_role["floor"] = m.floor;
     QJsonObject json_item;
     json_item["sp"] = m.role.item.sp;
     QJsonObject json_seed;

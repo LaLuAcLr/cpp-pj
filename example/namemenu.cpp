@@ -1,4 +1,4 @@
-#include "namemenu.h"
+﻿#include "namemenu.h"
 
 Namemenu::Namemenu(QWidget *parent) : QWidget(parent)
 {
@@ -12,14 +12,14 @@ Namemenu::Namemenu(QWidget *parent) : QWidget(parent)
     NameEdit->setFont(font);
     NameEdit->setStyleSheet("color:black");
     SetDone->setGeometry(360,320,120,30);
-    SetDone->setText("确定");
+    SetDone->setText(QString::fromLocal8Bit("确定"));
     SetDone->setFont(font);
     SetDone->setStyleSheet(button_style);
 }
 void Namemenu::paintEvent(QPaintEvent *)
 {
     painter = new QPainter(this);
-    QImage pixmap(":/now/bg.png");
+    QImage pixmap(":/now/bg2.png");
     painter->drawImage(QRectF(0, 0, 840, 680), pixmap);
     painter->end();
 }
