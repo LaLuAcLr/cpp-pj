@@ -1,0 +1,4 @@
+#ifndef STOREWIDGET_H
+#define STOREWIDGET_H
+
+#endif // STOREWIDGET_H

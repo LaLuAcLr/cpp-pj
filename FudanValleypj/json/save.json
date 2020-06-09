@@ -1,0 +1,578 @@
+{
+    "days": 6,
+    "field": [
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    ],
+    "role": {
+        "floor": 3,
+        "item": {
+            "seed": {
+                "Beet": 0,
+                "Cabbage": 0,
+                "Carrot": 0,
+                "Corn": 0,
+                "Cucumber": 0,
+                "Eggplant": 0,
+                "Onion": 0,
+                "Pineapple": 0,
+                "Potato": 0,
+                "Tomato": 0
+            },
+            "sp": 0,
+            "tool": {
+                "Hoe": 0,
+                "Knife": 0,
+                "None": 0,
+                "Pickhead": 0,
+                "Rod": 0,
+                "Seed": 0
+            }
+        },
+        "money": 2000,
+        "name": "256",
+        "pos_x": 10,
+        "pos_y": 7,
+        "stamina": 100
+    },
+    "veg": [
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ],
+        [
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            },
+            {
+                "name": "",
+                "plant_day": -1
+            }
+        ]
+    ]
+}
