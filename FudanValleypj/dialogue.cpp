@@ -8,7 +8,7 @@ Dialogue::Dialogue(QWidget *parent) : QWidget(parent)
 void Dialogue::initialwords()
 {
     NPC_words[0][0]="这里是自己家的农场";
-    NPC_words[0][1]="在左侧的下拉菜单中可以选择工具和种子";
+    NPC_words[0][1]="在右侧的下拉菜单中可以选择工具和种子";
     NPC_words[0][2]="按F可以进行耕种和收获，每次行动会消耗一定体力值";
     NPC_words[0][3]="点击右侧的增加天数可以进入新的一天";
     NPC_words[0][4]="加油工作吧！";

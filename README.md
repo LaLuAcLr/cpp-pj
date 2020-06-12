@@ -1,8 +1,6 @@
 # cpp-pj
 Final PJ for Software Design and Development Course
 
-Put anything you think important in this
-
 做了个能用的开始界面
 
 种菜界面包含：工具栏、人、田、菜、草、时钟

@@ -16,7 +16,7 @@ public:
     int Times;
     QTimer *haveBuyTimer;//购买计时器
     bool setChooseEnable;//是否可以购买
-    bool StoreWinisShow;//商店窗口是否显示
+    bool StoreWinisShow;//窗口是否显示
 private:
     int OptionNum; //有多少个选项
     int border_color_it;

@@ -78,8 +78,8 @@ void Window::init_window()
     BGM=new QMediaPlayer(this);//背景音乐
     BGM->setMedia(QUrl("qrc:/bgm/BGM3.mp3"));
     BGM->setVolume(30);
-    BGMTimer=new QTimer(this);
 
+    BGMTimer=new QTimer(this);
     connect(BGMTimer,SIGNAL(timeout()),this,SLOT(CheckBGMstate()));
     connect(startmenu->button_start, SIGNAL(clicked()), this, SLOT(show_nameset()));
     connect(startmenu->button_load, SIGNAL(clicked()), this, SLOT(load_func()));
@@ -504,11 +504,9 @@ void Window::mine_or_fish()
 }
 void Window::CheckBGMstate()
 {
-
    if(BGM->state()==0)//0代表停止 1代表播放 2代表暂停
    {
        BGM->play();
-       qDebug()<<QString::number(BGM->state());
    }
 }
 

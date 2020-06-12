@@ -572,19 +572,19 @@ void Farm::add_day_func()
 void Farm::change_tool(QString t)
 {
     qDebug()<<t;
-    dialogue->hide();
-    Store->hide();
+    if (!dialogue->isHidden()) dialogue->setFocus();
+    else if (!Store->isHidden()) Store->setFocus();
+    else this->setFocus();
     m.role.tool.name = t;
     m.role.tool.level = m.role.item.tool[t];
-    this->parentWidget()->setFocus();
 }
 void Farm::change_seed(QString t)
 {
     qDebug()<<t;
-    dialogue->hide();
-    Store->hide();
+    if (!dialogue->isHidden()) dialogue->setFocus();
+    else if (!Store->isHidden()) Store->setFocus();
+    else this->setFocus();
     m.role.seed = t;
-    this->setFocus();
 }
 void Farm::add_seed()
 {

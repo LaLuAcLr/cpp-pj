@@ -99,6 +99,7 @@ void StoreWidget::keyPressEvent(QKeyEvent *event)
         else
         {
             this->hide();
+            qDebug()<<"hide";
             parentWidget()->setFocus();
             chooseOption=0;//选项框回到起始位置
             OptionBox->setGeometry(init_x,init_y,length,width);
